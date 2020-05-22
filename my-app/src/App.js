@@ -1,20 +1,14 @@
-import React from "react"
-import Header from "./components/Header"
-import Main from "./components/Main"
-import Footer  from "./components/Footer"
+import React from "react";
+import NEvents from "./components/NEvents";
 
-function App(){
-  
+class App extends React.Component {
+  render() {
     return (
-      // <h1>Hello {firstname +" "+lastname}</h1>
-      //hr - horizontal rule
-       <div>
-           <h2>This is header</h2>
-           <h2>This is main</h2>
-           <h2>This is footer</h2>
-           
-           </div>    
-    )
+      <div>
+        <NEvents />
+      </div>
+    );
+  }
 }
 
-export default App
+export default App;
