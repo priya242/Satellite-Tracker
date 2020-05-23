@@ -1,14 +1,16 @@
 import React from "react";
-import "./style.css";
-import Chart from "./components/Chart"
-import WorldMap  from "./components/WorldMap"
+import "./css/style.css";
+import Chart from "./components/Chart";
+import WorldMap from "./components/WorldMap";
+import NEvents from "./components/NEvents";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       nasa: [],
       Data: [],
-      SatCat:[],
+      SatCat: [],
       isLoaded: false,
     };
   }
@@ -16,7 +18,7 @@ class App extends React.Component {
     const url =
       "https://images-api.nasa.gov/asset/ISS%204K%20Crew%20Earth%20Observations";
     const urls = this.loadSat();
-   // const url1 = 'https://www.space-track.org/basicspacedata/query/class/boxscore/format/html'
+    // const url1 = 'https://www.space-track.org/basicspacedata/query/class/boxscore/format/html'
     //--------------------fetching url-------------------
     fetch(url)
       .then((response) => response.json())
@@ -29,9 +31,9 @@ class App extends React.Component {
           isLoaded: true,
         });
       });
-  //--------------------fetching url1-------------------
-     
-  //--------------------fetching urls----------------------------
+    //--------------------fetching url1-------------------
+
+    //--------------------fetching urls----------------------------
     Promise.all(urls.map((url) => fetch(url)))
       .then((responses) => Promise.all(responses.map((r) => r.json())))
       .then((values) => {
@@ -67,19 +69,17 @@ class App extends React.Component {
   render() {
     //const { nasa, satellites, category, isLoaded } = this.state;
     const { nasa, Data, isLoaded } = this.state;
-   // console.log(Data)
+    // console.log(Data)
     return (
       <React.Fragment>
         <h1>Satellite Tracker</h1>
         {!isLoaded && <p>Loading...</p>}
         <video autoPlay controls muted loop src={nasa} type="video/mp4" />
-        <Chart DataSet = {Data} />
-        
+        <Chart DataSet={Data} />
+        <NEvents />
       </React.Fragment>
     );
-    
   }
-
 }
 
 export default App;
