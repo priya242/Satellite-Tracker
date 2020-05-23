@@ -1,7 +1,9 @@
 import React from "react";
-import "./style.css";
+import "./css/style.css";
 import Chart from "./components/Chart";
 import WorldMap from "./components/WorldMap";
+import NEvents from "./components/NEvents";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -74,6 +76,7 @@ class App extends React.Component {
         {!isLoaded && <p>Loading...</p>}
         <video autoPlay controls muted loop src={nasa} type="video/mp4" />
         <Chart DataSet={Data} />
+        <NEvents />
       </React.Fragment>
     );
   }

@@ -1,4 +1,5 @@
 import React from "react";
+import "./../css/nevents.css";
 import NEworldmap from "./nevents/NEworldmap";
 import NEeach from "./nevents/NEeach";
 import NEgraph from "./nevents/NEgraph";
@@ -9,26 +10,16 @@ class NEvents extends React.Component {
   constructor() {
     super();
     this.state = {
-      events: [
-        { earthquakes: 10 },
-        { volcanoes: 30 },
-        { tornadoes: 8 },
-        { tsunamis: 5 },
-      ],
+      events: [],
     };
   }
 
   componentDidMount() {
     this.setState({ loading: true });
-    fetch(
-      "https://eonet.sci.gsfc.nasa.gov/api/v3/events?limit=5&days=20&status=open"
-    )
+    fetch("https://eonet.sci.gsfc.nasa.gov/api/v3/events?days=20&status=open")
       .then((response) => response.json())
       .then((data) => {
-        this.setState({
-          loading: false,
-          events: data.results,
-        });
+        console.log(data.events);
       })
       .catch((error) => {
         console.log("Request failed: ", error);
