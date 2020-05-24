@@ -71,13 +71,24 @@ class App extends React.Component {
     const { nasa, Data, isLoaded } = this.state;
     // console.log(Data)
     return (
-      <React.Fragment>
-        <h1>Satellite Tracker</h1>
-        {!isLoaded && <p>Loading...</p>}
-        <video autoPlay controls muted loop src={nasa} type="video/mp4" />
-        <Chart DataSet={Data} />
+      <div>
+        <div className="navbar">
+          <span>
+            <b>Sattelite Tracker</b>
+          </span>
+          <div className="nav-controls">
+            <div>Natural Events</div>
+            <div>Satellite Info</div>
+          </div>
+        </div>
+        <React.Fragment>
+          {/* <h1>Satellite Tracker</h1> */}
+          {!isLoaded && <p>Loading...</p>}
+          <video autoPlay controls muted loop src={nasa} type="video/mp4" />
+          <Chart DataSet={Data} />
+        </React.Fragment>
         <NEvents />
-      </React.Fragment>
+      </div>
     );
   }
 }
