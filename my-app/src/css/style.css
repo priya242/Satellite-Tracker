@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  background-image: radial-gradient(#855988, #141852);
 }
 
 code {
@@ -20,3 +22,44 @@ h1 {
   color: darkblue;
   text-align: center;
 }
+
+/* --------------------------------NE events page - 2 ----------------------------*/
+.nevents {
+  /* background-image: linear-gradient(0deg, #141852, #855988); */
+  height: 100vh;
+  margin: 0 auto;
+  padding: 1em;
+}
+.navbar {
+  background-color: #070b34;
+  color: whitesmoke;
+  padding: 2vh 1vw;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.nav-controls {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-controls > div {
+  padding: 0 1em;
+}
+
+.nav-controls > input {
+  border: 0;
+  border-radius: 3px;
+  padding: 5px;
+  width: 16px;
+}
+
+.nav-controls > input:hover {
+  border: 1px solid orangered;
+}
+
+/* -----------------------------------------END----------------------------------*/
