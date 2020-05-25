@@ -77,8 +77,10 @@ class App extends React.Component {
             <b>Sattelite Tracker</b>
           </span>
           <div className="nav-controls">
-            <div>Natural Events</div>
             <div>Satellite Info</div>
+            <a href="/">
+              <div>Natural Events</div>
+            </a>
           </div>
         </div>
         <React.Fragment>
