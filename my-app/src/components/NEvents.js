@@ -2,6 +2,7 @@ import React from "react";
 import NEworldmap from "./nevents/NEworldmap";
 import NEeach from "./nevents/NEeach";
 import NEgraph from "./nevents/NEgraph";
+import events from "./nevents/tempin";
 
 class NEvents extends React.Component {
   // const NASA_API_KEY = encodeURIComponent(process.env.REACT_APP_NE_API_KEY);
@@ -37,6 +38,32 @@ class NEvents extends React.Component {
     //   .catch((error) => {
     //     console.log("Request failed: ", error);
     //   });
+
+    let data = require("./nevents/tempin");
+
+    let donutsdict = {};
+    let count = 0;
+    for (let event of data) {
+      count++;
+      console.log(event);
+      //counting the number of events for each category
+      //to prepare donut charts of 4 most frequently occuring category of events
+      for (let category of event.categories) {
+        if (category.id in donutsdict) {
+          donutsdict[category.id]++;
+        } else {
+          donutsdict[category.id] = 1;
+        }
+      }
+    }
+    let donuts = Object.keys(donutsdict).map((key) => [key, donutsdict[key]]);
+    donuts.sort((first, second) => second[1] - first[1]);
+
+    console.log(donuts);
+
+    console.log("DONUTS!!");
+    console.log("number of events" + count);
+    console.log(donuts);
   };
 
   render() {
@@ -49,7 +76,7 @@ class NEvents extends React.Component {
           <div className="nav-controls">
             Information for the last{" "}
             <input
-              type="text"
+              type="number"
               defaultValue={this.state.days}
               onKeyDown={this.daysChange}
             ></input>

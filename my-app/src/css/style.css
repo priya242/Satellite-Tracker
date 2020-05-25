@@ -55,11 +55,8 @@ h1 {
   border: 0;
   border-radius: 3px;
   padding: 5px;
-  width: 16px;
-}
-
-.nav-controls > input:hover {
-  border: 1px solid orangered;
+  width: 48px;
+  margin: 0 5px;
 }
 
 /* -----------------------------------------END----------------------------------*/
