@@ -59,4 +59,15 @@ h1 {
   margin: 0 5px;
 }
 
+.nav-controls > input:hover {
+  box-shadow: inset -1px -1px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+.number_events {
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  font-style: italic;
+}
+
 /* -----------------------------------------END----------------------------------*/

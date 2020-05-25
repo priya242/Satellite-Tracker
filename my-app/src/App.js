@@ -14,44 +14,44 @@ class App extends React.Component {
       isLoaded: false,
     };
   }
-  fetchData() {
-    const url =
-      "https://images-api.nasa.gov/asset/ISS%204K%20Crew%20Earth%20Observations";
-    const urls = this.loadSat();
-    // const url1 = 'https://www.space-track.org/basicspacedata/query/class/boxscore/format/html'
-    //--------------------fetching url-------------------
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        return data;
-      })
-      .then((data) => {
-        this.setState({
-          nasa: data.collection.items[1].href,
-          isLoaded: true,
-        });
-      });
-    //--------------------fetching url1-------------------
+  //   fetchData() {
+  //     const url =
+  //       "https://images-api.nasa.gov/asset/ISS%204K%20Crew%20Earth%20Observations";
+  //     const urls = this.loadSat();
+  //     // const url1 = 'https://www.space-track.org/basicspacedata/query/class/boxscore/format/html'
+  //     //--------------------fetching url-------------------
+  //     fetch(url)
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         return data;
+  //       })
+  //       .then((data) => {
+  //         this.setState({
+  //           nasa: data.collection.items[1].href,
+  //           isLoaded: true,
+  //         });
+  //       });
+  //--------------------fetching url1-------------------
 
-    //--------------------fetching urls----------------------------
-    Promise.all(urls.map((url) => fetch(url)))
-      .then((responses) => Promise.all(responses.map((r) => r.json())))
-      .then((values) => {
-        return values;
-      })
-      .then((data) => {
-        this.setState({
-          isLoaded: true,
-          Data: data,
-        });
-      });
+  //--------------------fetching urls----------------------------
+  // Promise.all(urls.map((url) => fetch(url)))
+  //   .then((responses) => Promise.all(responses.map((r) => r.json())))
+  //   .then((values) => {
+  //     return values;
+  //   })
+  //   .then((data) => {
+  //     this.setState({
+  //       isLoaded: true,
+  //       Data: data,
+  //     });
+  //   });
 
-    // .catch((error) = console.log(error));
-  }
+  // .catch((error) = console.log(error));
+  //}
 
-  componentDidMount() {
-    this.fetchData();
-  }
+  //   componentDidMount() {
+  //     // this.fetchData();
+  //   }
 
   loadSat() {
     let urls = [];

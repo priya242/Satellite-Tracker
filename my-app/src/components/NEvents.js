@@ -10,13 +10,15 @@ class NEvents extends React.Component {
   constructor() {
     super();
     this.state = {
+      count: 0,
       events: [],
       days: 30,
+      donuts: [],
     };
+    this.fetchData = this.fetchData.bind(this);
   }
 
   componentDidMount() {
-    // this.setState({ loading: true });
     this.fetchData(this.state.days);
   }
 
@@ -42,9 +44,9 @@ class NEvents extends React.Component {
     let data = require("./nevents/tempin");
 
     let donutsdict = {};
-    let count = 0;
+    let l_count = 0;
     for (let event of data) {
-      count++;
+      l_count++;
       console.log(event);
       //counting the number of events for each category
       //to prepare donut charts of 4 most frequently occuring category of events
@@ -56,14 +58,9 @@ class NEvents extends React.Component {
         }
       }
     }
-    let donuts = Object.keys(donutsdict).map((key) => [key, donutsdict[key]]);
-    donuts.sort((first, second) => second[1] - first[1]);
-
-    console.log(donuts);
-
-    console.log("DONUTS!!");
-    console.log("number of events" + count);
-    console.log(donuts);
+    let l_donuts = Object.keys(donutsdict).map((key) => [key, donutsdict[key]]);
+    l_donuts.sort((first, second) => second[1] - first[1]);
+    this.setState({ count: l_count, donuts: l_donuts });
   };
 
   render() {
@@ -83,12 +80,15 @@ class NEvents extends React.Component {
             days
           </div>
         </div>
+        <div className="number_events">
+          Number of events: {this.state.count}
+        </div>
         <NEworldmap />
         <div>
-          <NEeach event={this.state.events.earthquakes} />
-          <NEeach event={this.state.events.volcanoes} />
-          <NEeach event={this.state.events.tornadoes} />
-          <NEeach event={this.state.events.tsunamis} />
+          <NEeach event={this.state.donuts[0]} />
+          <NEeach event={this.state.donuts[1]} />
+          <NEeach event={this.state.donuts[2]} />
+          <NEeach event={this.state.donuts[3]} />
         </div>
         <NEgraph />
       </div>
