@@ -84,7 +84,7 @@ class App extends React.Component {
 
   loadSat() {
     let urls = [];
-    for (let id = 2; id <= 13; id++) {
+    for (let id = 2; id <= 53; id++) {
       let url1 =
         "https://www.n2yo.com/rest/v1/satellite/above/41.702/-76.014/0/70/" +
         id +
@@ -105,6 +105,7 @@ class App extends React.Component {
         <div className="video">
           <video autoPlay controls muted loop src={nasa} type="video/mp4" />
         </div>
+        <h1>What's up?</h1>
         <Chart DataSet={Data} />
         <BarChart YearData = {launchDate} />
         <WorldMap />
