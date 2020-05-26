@@ -15,12 +15,17 @@ code {
 }
 
 video {
-  width: 50%;
+  width: 50%;	
+  margin-left: 25%;
 }
 
 h1 {
   color: darkblue;
   text-align: center;
+}
+
+.charts{
+  width:80%;
 }
 
 /* --------------------------------NE events page - 2 ----------------------------*/
