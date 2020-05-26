@@ -24,12 +24,13 @@ class NEvents extends React.Component {
 
   daysChange = (event) => {
     if (event.key === "Enter") {
-      alert("here");
       this.setState({ days: event.target.value });
+      this.fetchData(this.state.days);
     }
   };
 
   fetchData = (days) => {
+    console.log(days);
     // fetch(
     //   "https://eonet.sci.gsfc.nasa.gov/api/v3/events?days=${encodeURIComponent({days})}&status=open"
     // )
@@ -42,7 +43,6 @@ class NEvents extends React.Component {
     //   });
 
     let data = require("./nevents/tempin");
-
     let donutsdict = {};
     let l_count = 0;
     for (let event of data) {
@@ -61,6 +61,8 @@ class NEvents extends React.Component {
     let l_donuts = Object.keys(donutsdict).map((key) => [key, donutsdict[key]]);
     l_donuts.sort((first, second) => second[1] - first[1]);
     this.setState({ count: l_count, donuts: l_donuts });
+    console.log("checking data type");
+    console.log(this.state.donuts);
   };
 
   render() {
@@ -85,7 +87,7 @@ class NEvents extends React.Component {
         </div>
         <NEworldmap />
         <div>
-          <NEeach event={this.state.donuts[0]} />
+          <NEeach event={this.state.donuts[0]} total={this.state.count} />
           <NEeach event={this.state.donuts[1]} />
           <NEeach event={this.state.donuts[2]} />
           <NEeach event={this.state.donuts[3]} />
