@@ -5,11 +5,11 @@ import { HorizontalBar } from "react-chartjs-2";
 export default function Chart(props) {
   var label = [];
   var Data = [];
-  
+
   for (var i = 0; i < props.DataSet.length; i++) {
-    if(props.DataSet[i].info.satcount > 2){
-    label.push(props.DataSet[i].info.category);
-    Data.push(props.DataSet[i].info.satcount);
+    if (props.DataSet[i].info.satcount > 2) {
+      label.push(props.DataSet[i].info.category);
+      Data.push(props.DataSet[i].info.satcount);
     }
   }
   const dataWithOptions = {
@@ -35,18 +35,17 @@ export default function Chart(props) {
   return (
     <div className="charts">
       <HorizontalBar
-       height={180}
+        height={180}
         data={data}
         options={{
           scales: {
             yAxes: [
               {
-                scaleLabel:{
-                  padding:20
+                scaleLabel: {
+                  padding: 20,
                 },
                 ticks: {
                   autoSkip: false,
-                  
                 },
               },
             ],

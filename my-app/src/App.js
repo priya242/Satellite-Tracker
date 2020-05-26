@@ -3,6 +3,11 @@ import Chart from "./components/Chart";
 import BarChart from "./components/BarChart";
 import WorldMap from "./components/WorldMap";
 import "./style.css";
+import "./css/style.css";
+import Chart from "./components/Chart";
+import WorldMap from "./components/WorldMap";
+import NEvents from "./components/NEvents";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +23,7 @@ class App extends React.Component {
     const url =
       "https://images-api.nasa.gov/asset/ISS%204K%20Crew%20Earth%20Observations";
     const urls = this.loadSat();
-    // const url1 = "https://uphere-space1.p.rapidapi.com/satellite/list?page=1";
+    
     const url1 =
       "https://www.n2yo.com/rest/v1/satellite/above/41.702/-76.014/0/70/0/&apiKey=TY7W6H-2YWZWQ-9W9WEL-4FIH";
     //--------------------------------------fetching url-------------------------------------------------
@@ -34,21 +39,6 @@ class App extends React.Component {
         });
       });
     //---------------------------------------fetching url1-------------------
-    /**fetch(url1, {
-    "method": "GET",
-    "headers": {
-      "x-rapidapi-host": "uphere-space1.p.rapidapi.com",
-      "x-rapidapi-key": "7c38e0936bmsh43070bf163c0855p15038cjsn373b4d98e3a6"
-    }
-  })
-  .then((response) => response.json())
-    .then((data) => {
-        //return data;
-        console.log(data)
-      })
-  .catch(err => {
-    console.log(err);
-  }); **/
     fetch(url1)
       .then((response) => response.json())
       .then((data) => {
@@ -74,13 +64,10 @@ class App extends React.Component {
           Data: data,
         });
       });
-
-    // .catch((error) = console.log(error));
-  }
-
-  componentDidMount() {
-    this.fetchData();
-  }
+    };
+   componentDidMount() {
+     // this.fetchData();
+    }
 
   loadSat() {
     let urls = [];
@@ -96,22 +83,33 @@ class App extends React.Component {
   }
   //--------------------------------------render and return--------------------------------
   render() {
-    const { nasa, Data, isLoaded, launchDate } = this.state;
+    //const { nasa, satellites, category, isLoaded } = this.state;
+    const { nasa, Data, isLoaded } = this.state;
     // console.log(Data)
     return (
-      <React.Fragment>
-        <h1>Satellite Tracker</h1>
-        {!isLoaded && <p>Loading...</p>}
-        <div className="video">
-          <video autoPlay controls muted loop src={nasa} type="video/mp4" />
+      <div>
+        <div className="navbar">
+          <span>
+            <b>Sattelite Tracker</b>
+          </span>
+          <div className="nav-controls">
+            <div>Satellite Info</div>
+            <a href="/">
+              <div>Natural Events</div>
+            </a>
+          </div>
         </div>
-        <h1>What's up?</h1>
-        <Chart DataSet={Data} />
-        <BarChart YearData = {launchDate} />
-        <WorldMap />
-      </React.Fragment>
+        <React.Fragment>
+          {/* <h1>Satellite Tracker</h1> */}
+          {!isLoaded && <p>Loading...</p>}
+          <video autoPlay controls muted loop src={nasa} type="video/mp4" />
+          <Chart DataSet={Data} />
+        </React.Fragment>
+        <NEvents />
+      </div>
     );
   }
 }
+
 
 export default App;
