@@ -1,6 +1,4 @@
 import React from "react";
-//import {HorizontalBar} from 'react-chartjs-2';
-//import {Doughnut} from 'react-chartjs-2';
 import { HorizontalBar } from "react-chartjs-2";
 export default function Chart(props) {
   var label = [];
@@ -12,9 +10,6 @@ export default function Chart(props) {
       Data.push(props.DataSet[i].info.satcount);
     }
   }
-  const dataWithOptions = {
-    data: [],
-  };
   const data = {
     labels: label,
     datasets: [
