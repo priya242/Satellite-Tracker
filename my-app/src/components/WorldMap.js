@@ -115,7 +115,7 @@ export default function WorldMap(props) {
 
   return (
     <div>
-      <h2>Highmaps</h2>
+      <h1>Highmaps</h1>
       <HighchartsReact
         options={mapOptions}
         constructorType={"mapChart"}
