@@ -16,7 +16,7 @@ export default function Chart(props) {
       {
         label: "Satellite Count By Categories",
         data: Data,
-        backgroundColor: "rgba(0, 0 ,238,0.2)",
+        backgroundColor: "rgba(255, 215, 0,0.8)",
         borderColor: "rgba(0 ,0 ,238,1)",
         borderWidth: 1,
         hoverBackgroundColor: "rgba(79, 148, 205,0.4)",
@@ -29,18 +29,35 @@ export default function Chart(props) {
 
   return (
     <div className="charts">
+       <h1>What's up?</h1>
       <HorizontalBar
         height={180}
         data={data}
         options={{
+          legend:{
+            labels:{
+              fontColor: "#fff",
+            }
+          },
           scales: {
             yAxes: [
               {
                 scaleLabel: {
                   padding: 20,
+                 
                 },
                 ticks: {
                   autoSkip: false,
+                  fontColor:"#fff",
+                  fontSize:14,
+                },
+              },
+            ],
+            xAxes: [
+              {
+                ticks: {
+                  fontColor:"#fff",
+                  fontSize:14,
                 },
               },
             ],
