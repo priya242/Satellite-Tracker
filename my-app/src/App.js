@@ -1,10 +1,7 @@
 import React from "react";
 import Chart from "./components/Chart";
 import BarChart from "./components/BarChart";
-import WorldMap from "./components/WorldMap";
-import "./style.css";
 import "./css/style.css";
-import Chart from "./components/Chart";
 import WorldMap from "./components/WorldMap";
 import NEvents from "./components/NEvents";
 
@@ -66,7 +63,7 @@ class App extends React.Component {
       });
     };
    componentDidMount() {
-     // this.fetchData();
+     this.fetchData();
     }
 
   loadSat() {
@@ -83,8 +80,7 @@ class App extends React.Component {
   }
   //--------------------------------------render and return--------------------------------
   render() {
-    //const { nasa, satellites, category, isLoaded } = this.state;
-    const { nasa, Data, isLoaded } = this.state;
+    const { nasa, Data, isLoaded,launchDate } = this.state;
     // console.log(Data)
     return (
       <div>
@@ -104,6 +100,8 @@ class App extends React.Component {
           {!isLoaded && <p>Loading...</p>}
           <video autoPlay controls muted loop src={nasa} type="video/mp4" />
           <Chart DataSet={Data} />
+          <BarChart YearData = {launchDate} />
+          <WorldMap  />
         </React.Fragment>
         <NEvents />
       </div>
