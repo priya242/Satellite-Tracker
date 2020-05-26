@@ -1,14 +1,16 @@
 import React from "react";
+import Chart from "./components/Chart";
+import BarChart from "./components/BarChart";
+import WorldMap from "./components/WorldMap";
 import "./style.css";
-import Chart from "./components/Chart"
-import WorldMap  from "./components/WorldMap"
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       nasa: [],
       Data: [],
-      SatCat:[],
+      SatCat: [],
+      launchDate: [],
       isLoaded: false,
     };
   }
@@ -16,8 +18,10 @@ class App extends React.Component {
     const url =
       "https://images-api.nasa.gov/asset/ISS%204K%20Crew%20Earth%20Observations";
     const urls = this.loadSat();
-   // const url1 = 'https://www.space-track.org/basicspacedata/query/class/boxscore/format/html'
-    //--------------------fetching url-------------------
+    // const url1 = "https://uphere-space1.p.rapidapi.com/satellite/list?page=1";
+    const url1 =
+      "https://www.n2yo.com/rest/v1/satellite/above/41.702/-76.014/0/70/0/&apiKey=TY7W6H-2YWZWQ-9W9WEL-4FIH";
+    //--------------------------------------fetching url-------------------------------------------------
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -29,9 +33,36 @@ class App extends React.Component {
           isLoaded: true,
         });
       });
-  //--------------------fetching url1-------------------
-     
-  //--------------------fetching urls----------------------------
+    //---------------------------------------fetching url1-------------------
+    /**fetch(url1, {
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-host": "uphere-space1.p.rapidapi.com",
+      "x-rapidapi-key": "7c38e0936bmsh43070bf163c0855p15038cjsn373b4d98e3a6"
+    }
+  })
+  .then((response) => response.json())
+    .then((data) => {
+        //return data;
+        console.log(data)
+      })
+  .catch(err => {
+    console.log(err);
+  }); **/
+    fetch(url1)
+      .then((response) => response.json())
+      .then((data) => {
+      return data;      
+       //console.log(data.above);
+      })
+      .then((data) => {
+        this.setState({
+          launchDate: data,
+          isLoaded: true,
+        });
+      });
+
+    //---------------------------------------fetching urls----------------------------
     Promise.all(urls.map((url) => fetch(url)))
       .then((responses) => Promise.all(responses.map((r) => r.json())))
       .then((values) => {
@@ -63,23 +94,23 @@ class App extends React.Component {
     return urls;
     //console.log(urls)
   }
-  //------------------render snd return--------------------
+  //--------------------------------------render and return--------------------------------
   render() {
-    //const { nasa, satellites, category, isLoaded } = this.state;
-    const { nasa, Data, isLoaded } = this.state;
-   // console.log(Data)
+    const { nasa, Data, isLoaded, launchDate } = this.state;
+    // console.log(Data)
     return (
       <React.Fragment>
         <h1>Satellite Tracker</h1>
         {!isLoaded && <p>Loading...</p>}
-        <video autoPlay controls muted loop src={nasa} type="video/mp4" />
-        <Chart DataSet = {Data} />
-        
+        <div className="video">
+          <video autoPlay controls muted loop src={nasa} type="video/mp4" />
+        </div>
+        <Chart DataSet={Data} />
+        <BarChart YearData = {launchDate} />
+        <WorldMap />
       </React.Fragment>
     );
-    
   }
-
 }
 
 export default App;

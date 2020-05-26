@@ -1,5 +1,4 @@
 import React,{ Component } from "react";
-//var Chart = require("chart.js");
 //import {HorizontalBar} from 'react-chartjs-2';
 import {Doughnut} from 'react-chartjs-2';
 export default function Chart(props) {
