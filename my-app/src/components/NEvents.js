@@ -15,7 +15,7 @@ class NEvents extends React.Component {
       days: 30,
       donuts: [],
     };
-    this.fetchData = this.fetchData.bind(this);
+    // this.fetchData = this.fetchData.bind(this);
   }
 
   componentDidMount() {
@@ -30,7 +30,6 @@ class NEvents extends React.Component {
   };
 
   fetchData = (days) => {
-    console.log(days);
     // fetch(
     //   "https://eonet.sci.gsfc.nasa.gov/api/v3/events?days=${encodeURIComponent({days})}&status=open"
     // )
@@ -47,7 +46,6 @@ class NEvents extends React.Component {
     let l_count = 0;
     for (let event of data) {
       l_count++;
-      console.log(event);
       //counting the number of events for each category
       //to prepare donut charts of 4 most frequently occuring category of events
       for (let category of event.categories) {
@@ -60,9 +58,7 @@ class NEvents extends React.Component {
     }
     let l_donuts = Object.keys(donutsdict).map((key) => [key, donutsdict[key]]);
     l_donuts.sort((first, second) => second[1] - first[1]);
-    this.setState({ count: l_count, donuts: l_donuts });
-    console.log("checking data type");
-    console.log(this.state.donuts);
+    this.setState({ donuts: l_donuts, count: l_count });
   };
 
   render() {
@@ -85,14 +81,16 @@ class NEvents extends React.Component {
         <div className="number_events">
           Number of events: {this.state.count}
         </div>
-        <NEworldmap />
-        <div>
-          <NEeach event={this.state.donuts[0]} total={this.state.count} />
-          <NEeach event={this.state.donuts[1]} />
-          <NEeach event={this.state.donuts[2]} />
-          <NEeach event={this.state.donuts[3]} />
-        </div>
-        <NEgraph />
+        {this.state.donuts.length != 0 ? (
+          <div>
+            <NEeach event={this.state.donuts[0]} total={this.state.count} />
+            <NEeach event={this.state.donuts[1]} total={this.state.count} />
+            <NEeach event={this.state.donuts[2]} total={this.state.count} />
+            <NEeach event={this.state.donuts[3]} total={this.state.count} />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     );
   }
