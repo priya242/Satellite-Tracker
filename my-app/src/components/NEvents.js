@@ -83,10 +83,9 @@ class NEvents extends React.Component {
         </div>
         {this.state.donuts.length != 0 ? (
           <div>
-            <NEeach event={this.state.donuts[0]} total={this.state.count} />
-            <NEeach event={this.state.donuts[1]} total={this.state.count} />
-            <NEeach event={this.state.donuts[2]} total={this.state.count} />
-            <NEeach event={this.state.donuts[3]} total={this.state.count} />
+            {this.state.donuts.slice(0, 4).map((donut) => (
+              <NEeach event={donut} total={this.state.count} />
+            ))}
           </div>
         ) : (
           ""
