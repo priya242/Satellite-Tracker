@@ -27,6 +27,7 @@ class NEeach extends React.Component {
     };
 
     //Plugin for text in the middle : https://jsfiddle.net/cmyker/ooxdL2vj/
+    //https://www.chartjs.org/docs/latest/developers/plugins.html
     const plugin = [
       {
         beforeDraw: function (chart) {
@@ -40,7 +41,7 @@ class NEeach extends React.Component {
           ctx.textBaseline = "middle";
           ctx.fillStyle = "#B21F00";
 
-          var text = ((count / total) * 100).toFixed(2).toString() + "%",
+          var text = count.toString(),
             textX = Math.round((width - ctx.measureText(text).width) / 2),
             textY = height / 2;
 
