@@ -1,14 +1,17 @@
 import React from "react";
+import Loader from 'react-loader-spinner';
 import { HorizontalBar } from "react-chartjs-2";
 export default function Chart(props) {
   var label = [];
-  var Data = [];
+  var Data = []; 
+  var isLoaded = false;
 
   for (var i = 0; i < props.DataSet.length; i++) {
     if (props.DataSet[i].info.satcount > 2) {
       label.push(props.DataSet[i].info.category);
       Data.push(props.DataSet[i].info.satcount);
     }
+    isLoaded = true;
   }
   const data = {
     labels: label,
@@ -19,8 +22,8 @@ export default function Chart(props) {
         backgroundColor: "rgba(255, 215, 0,0.8)",
         borderColor: "rgba(0 ,0 ,238,1)",
         borderWidth: 1,
-        hoverBackgroundColor: "rgba(79, 148, 205,0.4)",
-        hoverBorderColor: "rgba(79, 148 ,205,1)",
+        hoverBackgroundColor: "rgba(255, 215, 0,0.4)",
+        hoverBorderColor: "rgba(0 ,0 ,238,1)",
         barPercentage: 0.5,
         barThickness: 20,
       },
@@ -30,6 +33,17 @@ export default function Chart(props) {
   return (
     <div className="charts">
        <h1>What's up?</h1>
+       {!isLoaded && <div 
+       style={{
+        width: "100%",
+         height: "100",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+         }}>
+        <Loader type="ThreeDots" color="rgba(255, 215, 0,0.8)" height="100" width="100"
+        />
+         </div>}
       <HorizontalBar
         height={180}
         data={data}

@@ -32,7 +32,7 @@ class App extends React.Component {
       .then((data) => {
         this.setState({
           nasa: data.collection.items[1].href,
-          isLoaded: true,
+          
         });
       });
     //---------------------------------------fetching url1-------------------
@@ -45,7 +45,7 @@ class App extends React.Component {
       .then((data) => {
         this.setState({
           launchDate: data,
-          isLoaded: true,
+          
         });
       });
 
@@ -62,6 +62,7 @@ class App extends React.Component {
         });
       });
     };
+    
    componentDidMount() {
      this.fetchData();
     }
@@ -78,6 +79,8 @@ class App extends React.Component {
     return urls;
     //console.log(urls)
   }
+  //--------------------------------------react-promise-tracker usePromiseTracker hook---------------------------
+   
   //--------------------------------------render and return--------------------------------
   render() {
     const { nasa, Data, isLoaded,launchDate } = this.state;
@@ -108,6 +111,7 @@ class App extends React.Component {
     );
   }
 }
+
 
 
 export default App;
