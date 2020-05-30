@@ -55,6 +55,8 @@ class NEvents extends React.Component {
           donutsdict[category.id] = 1;
         }
       }
+
+      //to prepare world map
     }
     let l_donuts = Object.keys(donutsdict).map((key) => [key, donutsdict[key]]);
     l_donuts.sort((first, second) => second[1] - first[1]);
@@ -90,6 +92,9 @@ class NEvents extends React.Component {
         ) : (
           ""
         )}
+        <div>
+          <NEworldmap />
+        </div>
       </div>
     );
   }
