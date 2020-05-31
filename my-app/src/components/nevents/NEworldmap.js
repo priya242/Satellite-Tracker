@@ -23,9 +23,9 @@ class NEworldmap extends React.Component {
 
       tooltip: {
         pointFormat:
-          "{point.title}" +
-          "Category: {point.category}<br>" +
-          "Lat: {point.lat}<br>" +
+          "{point.title}<br>" +
+          // "Type: {point.category}<br>" +
+          "Lat: {point.lat} " +
           "Lon: {point.lon}",
       },
       // colorAxis: {
@@ -39,18 +39,23 @@ class NEworldmap extends React.Component {
       //   ],
       // },
 
+      mapNavigation: {
+        enabled: true,
+      },
+
       series: [
         {
           name: "Basemap",
           mapData: map,
+          joinBy: ["iso-a2", "code"],
           name: "",
           showInLegend: false,
         },
         {
           type: "mappoint",
-          name: "",
+          name: "Event",
           data: data,
-          maxSize: "12%",
+          showInLegend: false,
         },
       ],
     };
