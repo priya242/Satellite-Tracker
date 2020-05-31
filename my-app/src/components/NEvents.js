@@ -55,7 +55,7 @@ class NEvents extends React.Component {
       //CATEGORIES information for each child component
       for (let category of event.categories) {
         //world
-        categories += category.title + " ";
+        categories += category.id + " ";
         //donuts
         if (category.id in donutsdict) {
           donutsdict[category.id]++;
@@ -70,7 +70,7 @@ class NEvents extends React.Component {
         if (geometry.type === "Point") {
           let worldevent = {};
           worldevent["title"] = title;
-          worldevent["category"] = categories;
+          worldevent["type"] = categories.trim();
           worldevent["lat"] = geometry.coordinates[1];
           worldevent["lon"] = geometry.coordinates[0];
           l_worlddata.push(worldevent);
@@ -80,7 +80,7 @@ class NEvents extends React.Component {
           for (let coord of geometry.coordinates) {
             let worldevent = {};
             worldevent["title"] = title;
-            worldevent["category"] = categories;
+            worldevent["type"] = categories.trim();
             worldevent["lon"] = coord[0];
             worldevent["lat"] = coord[1];
             l_worlddata.push(worldevent);
