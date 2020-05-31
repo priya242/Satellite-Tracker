@@ -110,20 +110,23 @@ class NEvents extends React.Component {
             days
           </div>
         </div>
-        <div className="number_events">
-          Number of events: {this.state.count}
-        </div>
-        {this.state.donuts.length != 0 ? (
-          <div>
-            {this.state.donuts.slice(0, 4).map((donut) => (
-              <NEeach event={donut} total={this.state.count} />
-            ))}
+        <div className="nevents_container">
+          <div className="number_events nevents_item">
+            <div className="number">
+              Number of events: <br />
+              <span>{this.state.count}</span>
+            </div>
+            {this.state.donuts.length != 0
+              ? this.state.donuts
+                  .slice(0, 4)
+                  .map((donut) => (
+                    <NEeach event={donut} total={this.state.count} />
+                  ))
+              : ""}
           </div>
-        ) : (
-          ""
-        )}
-        <div>
-          <NEworldmap worlddata={this.state.worlddata} />
+          <div className="nevents_world nevents_item">
+            <NEworldmap worlddata={this.state.worlddata} />
+          </div>
         </div>
       </div>
     );
