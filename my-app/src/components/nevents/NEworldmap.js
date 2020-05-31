@@ -2,15 +2,14 @@ import React from "react";
 //import { render } from "react-dom";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import mapDataWorld from "../mapDataWorld";
+import mapDataWorld from "./nevents_map_latlong";
 
 class NEworldmap extends React.Component {
   render() {
     require("highcharts/modules/map")(Highcharts);
 
     const data = this.props.worlddata;
-
-    alert(typeof mapDataWorld);
+    console.log(data);
 
     const map = mapDataWorld;
 
@@ -24,7 +23,7 @@ class NEworldmap extends React.Component {
 
       tooltip: {
         pointFormat:
-          "{point.title}<br>" +
+          "{point.title}" +
           "Category: {point.category}<br>" +
           "Lat: {point.lat}<br>" +
           "Lon: {point.lon}",
@@ -51,6 +50,7 @@ class NEworldmap extends React.Component {
           type: "mappoint",
           name: "",
           data: data,
+          maxSize: "12%",
         },
       ],
     };

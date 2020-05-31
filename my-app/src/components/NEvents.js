@@ -71,8 +71,8 @@ class NEvents extends React.Component {
           let worldevent = {};
           worldevent["title"] = title;
           worldevent["category"] = categories;
-          worldevent["lat"] = geometry.coordinates[0];
-          worldevent["lon"] = geometry.coordinates[1];
+          worldevent["lat"] = geometry.coordinates[1];
+          worldevent["lon"] = geometry.coordinates[0];
           l_worlddata.push(worldevent);
         }
         //one event multiple locations
@@ -81,8 +81,8 @@ class NEvents extends React.Component {
             let worldevent = {};
             worldevent["title"] = title;
             worldevent["category"] = categories;
-            worldevent["lat"] = coord[0];
-            worldevent["lon"] = coord[1];
+            worldevent["lon"] = coord[0];
+            worldevent["lat"] = coord[1];
             l_worlddata.push(worldevent);
           }
         }
