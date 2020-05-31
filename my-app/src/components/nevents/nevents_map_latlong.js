@@ -26184,3 +26184,5 @@ const mapDataWorld = {
     },
   ],
 };
+
+export default mapDataWorld;
