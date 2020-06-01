@@ -1,13 +1,13 @@
 import React from "react";
-import Loader from 'react-loader-spinner';
+import Loader from "react-loader-spinner";
 import { HorizontalBar } from "react-chartjs-2";
 export default function Chart(props) {
   var label = [];
-  var Data = []; 
+  var Data = [];
   var isLoaded = false;
 
   for (var i = 0; i < props.DataSet.length; i++) {
-    if (props.DataSet[i].info.satcount > 2) {
+    if (props.DataSet[i].info.satcount > 4) {
       label.push(props.DataSet[i].info.category);
       Data.push(props.DataSet[i].info.satcount);
     }
@@ -32,46 +32,52 @@ export default function Chart(props) {
 
   return (
     <div className="charts">
-       <h1>What's up?</h1>
-       {!isLoaded && <div 
-       style={{
-        width: "100%",
-         height: "100",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-         }}>
-        <Loader type="ThreeDots" color="rgba(255, 215, 0,0.8)" height="100" width="100"
-        />
-         </div>}
+      <h1>What's up?</h1>
+      {!isLoaded && (
+        <div
+          style={{
+            width: "100%",
+            height: "100",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Loader
+            type="ThreeDots"
+            color="rgba(255, 215, 0,0.8)"
+            height="100"
+            width="100"
+          />
+        </div>
+      )}
       <HorizontalBar
-        height={180}
+        height={220}
         data={data}
         options={{
-          legend:{
-            labels:{
+          legend: {
+            labels: {
               fontColor: "#fff",
-            }
+            },
           },
           scales: {
             yAxes: [
               {
                 scaleLabel: {
-                  padding: 20,
-                 
+                  padding: 0,
                 },
                 ticks: {
                   autoSkip: false,
-                  fontColor:"#fff",
-                  fontSize:14,
+                  fontColor: "#fff",
+                  fontSize: 14,
                 },
               },
             ],
             xAxes: [
               {
                 ticks: {
-                  fontColor:"#fff",
-                  fontSize:14,
+                  fontColor: "#fff",
+                  fontSize: 14,
                 },
               },
             ],
