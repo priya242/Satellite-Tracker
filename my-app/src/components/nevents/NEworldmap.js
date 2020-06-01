@@ -44,16 +44,6 @@ class NEworldmap extends React.Component {
           color: "#F0F0F0",
         },
       },
-      // colorAxis: {
-      //   min: 0,
-      //   stops: [
-      //     [0.2, "#0000FF"],
-      //     [0.4, "#1E90FF)"],
-      //     [0.6, "#00BFFF"],
-      //     [0.8, "#87CEFF"],
-      //     [0.2, "B0E2FF"],
-      //   ],
-      // },
 
       mapNavigation: {
         enabled: true,
@@ -87,7 +77,7 @@ class NEworldmap extends React.Component {
     };
 
     return (
-      <div>
+      <div className="nevents_world nevents_item">
         <HighchartsReact
           options={mapOptions}
           constructorType={"mapChart"}
