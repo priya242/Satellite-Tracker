@@ -11,9 +11,9 @@ class NEvents extends React.Component {
     super();
     this.state = {
       count: 0,
-      events: [],
       days: 30,
       donuts: [],
+      worlddata: [],
     };
     // this.fetchData = this.fetchData.bind(this);
   }
@@ -43,22 +43,54 @@ class NEvents extends React.Component {
 
     let data = require("./nevents/tempin");
     let donutsdict = {};
+    let l_worlddata = [];
     let l_count = 0;
     for (let event of data) {
-      l_count++;
-      //counting the number of events for each category
-      //to prepare donut charts of 4 most frequently occuring category of events
+      l_count++; //total number of events
+
+      //world map data
+      let title = event.title;
+      let categories = "";
+
+      //CATEGORIES information for each child component
       for (let category of event.categories) {
+        //world
+        categories += category.id + " ";
+        //donuts
         if (category.id in donutsdict) {
           donutsdict[category.id]++;
         } else {
           donutsdict[category.id] = 1;
         }
       }
+
+      for (let geometry of event.geometry) {
+        //world
+        //one event one location
+        if (geometry.type === "Point") {
+          let worldevent = {};
+          worldevent["title"] = title;
+          worldevent["type"] = categories.trim();
+          worldevent["lat"] = geometry.coordinates[1];
+          worldevent["lon"] = geometry.coordinates[0];
+          l_worlddata.push(worldevent);
+        }
+        //one event multiple locations
+        else {
+          for (let coord of geometry.coordinates) {
+            let worldevent = {};
+            worldevent["title"] = title;
+            worldevent["type"] = categories.trim();
+            worldevent["lon"] = coord[0];
+            worldevent["lat"] = coord[1];
+            l_worlddata.push(worldevent);
+          }
+        }
+      }
     }
     let l_donuts = Object.keys(donutsdict).map((key) => [key, donutsdict[key]]);
     l_donuts.sort((first, second) => second[1] - first[1]);
-    this.setState({ donuts: l_donuts, count: l_count });
+    this.setState({ donuts: l_donuts, count: l_count, worlddata: l_worlddata });
   };
 
   render() {
@@ -78,19 +110,24 @@ class NEvents extends React.Component {
             days
           </div>
         </div>
-        <div className="number_events">
-          Number of events: {this.state.count}
-        </div>
-        {this.state.donuts.length != 0 ? (
-          <div>
-            <NEeach event={this.state.donuts[0]} total={this.state.count} />
-            <NEeach event={this.state.donuts[1]} total={this.state.count} />
-            <NEeach event={this.state.donuts[2]} total={this.state.count} />
-            <NEeach event={this.state.donuts[3]} total={this.state.count} />
+        <div className="nevents_container">
+          <div className="number_events nevents_item">
+            <div className="number">
+              Number of events: <br />
+              <span>{this.state.count}</span>
+            </div>
+            {this.state.donuts.length != 0
+              ? this.state.donuts
+                  .slice(0, 4)
+                  .map((donut) => (
+                    <NEeach event={donut} total={this.state.count} />
+                  ))
+              : ""}
           </div>
-        ) : (
-          ""
-        )}
+          <div className="nevents_world nevents_item">
+            <NEworldmap worlddata={this.state.worlddata} />
+          </div>
+        </div>
       </div>
     );
   }

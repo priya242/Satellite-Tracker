@@ -20,7 +20,7 @@ export default function WorldMap(props) {
         [0.4, "#1E90FF)"],
         [0.6, "#00BFFF"],
         [0.8, "#87CEFF"],
-        [0.2,"B0E2FF"]
+        [0.2, "B0E2FF"],
       ],
     },
 

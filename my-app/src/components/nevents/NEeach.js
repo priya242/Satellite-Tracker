@@ -12,9 +12,9 @@ class NEeach extends React.Component {
       labels: [event, ""],
       datasets: [
         {
-          backgroundColor: ["#B21F00", ""],
-          hoverBackgroundColor: ["#501800", ""],
-          hoverBorderColor: ["#501800", ""],
+          backgroundColor: ["#972f48", "#141852"],
+          hoverBackgroundColor: ["#772249", "#141852"],
+          hoverBorderColor: ["#772249", "#141852"],
           hoverBorderWidth: 1,
           borderWidth: 0,
           data: [count, total - count],
@@ -27,6 +27,7 @@ class NEeach extends React.Component {
     };
 
     //Plugin for text in the middle : https://jsfiddle.net/cmyker/ooxdL2vj/
+    //https://www.chartjs.org/docs/latest/developers/plugins.html
     const plugin = [
       {
         beforeDraw: function (chart) {
@@ -38,9 +39,9 @@ class NEeach extends React.Component {
           var fontSize = (height / 114).toFixed(2);
           ctx.font = fontSize + "em sans-serif";
           ctx.textBaseline = "middle";
-          ctx.fillStyle = "#B21F00";
+          ctx.fillStyle = "#972f48";
 
-          var text = ((count / total) * 100).toFixed(2).toString() + "%",
+          var text = count.toString(),
             textX = Math.round((width - ctx.measureText(text).width) / 2),
             textY = height / 2;
 
