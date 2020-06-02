@@ -20,7 +20,7 @@ class App extends React.Component {
     const url =
       "https://images-api.nasa.gov/asset/ISS%204K%20Crew%20Earth%20Observations";
     const urls = this.loadSat();
-    
+
     const url1 =
       "https://www.n2yo.com/rest/v1/satellite/above/41.702/-76.014/0/70/0/&apiKey=TY7W6H-2YWZWQ-9W9WEL-4FIH";
     //--------------------------------------fetching url-------------------------------------------------
@@ -32,20 +32,18 @@ class App extends React.Component {
       .then((data) => {
         this.setState({
           nasa: data.collection.items[1].href,
-          
         });
       });
     //---------------------------------------fetching url1-------------------
     fetch(url1)
       .then((response) => response.json())
       .then((data) => {
-      return data;      
-       //console.log(data.above);
+        return data;
+        //console.log(data.above);
       })
       .then((data) => {
         this.setState({
           launchDate: data,
-          
         });
       });
 
@@ -61,11 +59,11 @@ class App extends React.Component {
           Data: data,
         });
       });
-    };
-    
-   componentDidMount() {
-     this.fetchData();
-    }
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
 
   loadSat() {
     let urls = [];
@@ -80,10 +78,10 @@ class App extends React.Component {
     //console.log(urls)
   }
   //--------------------------------------react-promise-tracker usePromiseTracker hook---------------------------
-   
+
   //--------------------------------------render and return--------------------------------
   render() {
-    const { nasa, Data, isLoaded,launchDate } = this.state;
+    const { nasa, Data, isLoaded, launchDate } = this.state;
     // console.log(Data)
     return (
       <div>
@@ -103,15 +101,12 @@ class App extends React.Component {
           {!isLoaded && <p>Loading...</p>}
           <video autoPlay controls muted loop src={nasa} type="video/mp4" />
           <Chart DataSet={Data} />
-          <BarChart YearData = {launchDate} />
-          <WorldMap  />
+          <BarChart YearData={launchDate} />
+          <WorldMap />
         </React.Fragment>
         <NEvents />
       </div>
     );
   }
 }
-
-
-
 export default App;
