@@ -2,14 +2,28 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 
 class NEarea extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      data: {
-        labels: [],
-        datasets: [],
-      },
-      options: {
+  render() {
+    let event = this.props.event;
+    let data = {};
+    let options = {};
+
+    if (Object.keys(event).length !== 0 && event.constructor !== Object) {
+      let l_labels = event[0].geometry.map((g) => g.date);
+      let l_data = event[0].geometry.map((g) => g.magnitudeValue);
+      data = {
+        labels: l_labels,
+        datasets: [
+          {
+            fill: false,
+            lineTension: 0.5,
+            backgroundColor: "rgba(75,192,192,1)",
+            borderColor: "rgba(0,0,0,1)",
+            borderWidth: 2,
+            data: l_data,
+          },
+        ],
+      };
+      options = {
         title: {
           display: true,
           text: "Magnitude per day",
@@ -18,40 +32,11 @@ class NEarea extends React.Component {
           display: true,
           position: "right",
         },
-      },
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
+      };
+    }
 
-  handleChange(e) {
-    this.setState({ event: e.target.value });
-  }
-
-  render() {
-    let data = this.props.area_data_mag;
-
-    let selectops = data.map((data, i) => (
-      <option key={data.title} value={data.title}>
-        {data.title}
-      </option>
-    ));
-
-    return (
-      <div>
-        <div className="nav-controls">
-          Event:{" "}
-          <select
-            name="Event"
-            className="area_select"
-            onChange={this.handleChange}
-          >
-            <option>Select Event</option>
-            {selectops}
-          </select>
-        </div>
-        {<Line data={this.state.data} options={this.state.options} />}
-      </div>
-    );
+    return <Line data={data} options={options} />;
   }
 }
+
 export default NEarea;

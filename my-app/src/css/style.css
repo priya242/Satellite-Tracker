@@ -85,7 +85,7 @@ h1 {
 .nevents_container {
   display: grid;
   grid-template-rows: 45vh 45vh;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .nevents_item {
@@ -95,7 +95,7 @@ h1 {
 .nevents_world {
   height: 100%;
   width: 100%;
-  grid-column: 2 / span 5;
+  grid-column: 2 / span 3;
 }
 
 /* -----------------------------------------END----------------------------------*/
