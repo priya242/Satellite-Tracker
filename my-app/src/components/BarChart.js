@@ -2,22 +2,21 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 
 class BarChart extends React.Component {
-  //constructor(props) {
-    //super(props);
+  constructor(props) {
+    super(props);
     //this.state = {
       //propYears: [],
       //propStateData: [],
       //propStateOptions: [],
       //propStateYearlyData: []
     //};
-  //}
-
-  state = {
+  this.state = {
     years: [],
     stateData: [],
     stateOptions: [],
     stateYearlyData: []
   }
+}
 
 fetchChartData(local){
   var localYears = [];
@@ -86,10 +85,11 @@ fetchChartData(local){
       ],
     },
   };
-  this.state.years = localYears;
-  this.state.stateData = data;
-  this.state.stateOptions = options;
-  this.state.stateYearlyData = yearlyData;
+ 
+ this.state.years = localYears;
+ this.state.stateData = data;
+ this.state.stateOptions = options;
+ this.state.stateYearlyData = yearlyData;
   //this.setState({
     //propStateData: data,  
     //propStateOptions: options,
@@ -98,11 +98,10 @@ fetchChartData(local){
   //});
 }
 
-  render() {
-  
+  render(boolVal) {
+    const Data = [];
+    const Options = [];
     this.fetchChartData(this.props.DataSets.above);
-    const Data = this.state.stateData;
-    const Options = this.state.stateOptions;
     return (
       <div className="barcharts">
         <h1>Active Satellites</h1>
@@ -117,12 +116,12 @@ fetchChartData(local){
           <option value="1980-1990">1980-1990</option>
           <option value="1970-1980">1970-1980</option>
         </select>
-        <Bar data={Data} height={20} width={80} options={Options} />
+        <Bar data={this.state.stateData} height={20} width={80} options={this.state.stateOptions} />
       </div>
     );
   }
 
-  onFieldChange(event) {
+  onFieldChange() {
     //console.log(yearlyData)
     var ddValue = document.getElementById("dd");
     var yearRange = ddValue.value.split("-");
@@ -138,9 +137,10 @@ fetchChartData(local){
     //}
     filteredData = {1958: 1, 1960: 10}
     console.log(filteredData)
-    this.state.stateData = filteredData
-    this.forceUpdate()
+    this.state.stateData = filteredData;
+    this.render(true)
   }
 }
+
 export default BarChart;
 
