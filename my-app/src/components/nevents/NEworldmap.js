@@ -9,7 +9,6 @@ class NEworldmap extends React.Component {
     require("highcharts/modules/map")(Highcharts);
 
     const data = this.props.worlddata;
-    console.log(data);
 
     const map = mapDataWorld;
 
@@ -38,7 +37,10 @@ class NEworldmap extends React.Component {
 
       tooltip: {
         pointFormat:
-          "{point.title}<br>" + "Lat: {point.lat} " + "Lon: {point.lon}",
+          "{point.title}<br>" +
+          "Lat: {point.lat} " +
+          "Lon: {point.lon}<br>" +
+          "Date: {point.date}",
         backgroundColor: "rgba(0, 0, 0, 0.85)",
         style: {
           color: "#F0F0F0",

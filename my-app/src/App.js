@@ -20,7 +20,7 @@ class App extends React.Component {
     const url =
       "https://images-api.nasa.gov/asset/ISS%204K%20Crew%20Earth%20Observations";
     const urls = this.loadSat();
-    
+
     const url1 =
       "https://www.n2yo.com/rest/v1/satellite/above/41.702/-76.014/0/90/0/&apiKey=TY7W6H-2YWZWQ-9W9WEL-4FIH";
     //--------------------------------------fetching url-------------------------------------------------
@@ -32,19 +32,18 @@ class App extends React.Component {
       .then((data) => {
         this.setState({
           nasa: data.collection.items[1].href,
-          
         });
       });
     //---------------------------------------fetching url1-------------------
     fetch(url1)
       .then((response) => response.json())
       .then((data) => {
-      return data;      
-       //console.log(data);
+        return data;
+        //console.log(data);
       })
       .then((data) => {
         this.setState({
-          launchDate: data,         
+          launchDate: data,
         });
       });
     //---------------------------------------fetching urls----------------------------
@@ -52,7 +51,7 @@ class App extends React.Component {
       .then((responses) => Promise.all(responses.map((r) => r.json())))
       .then((data) => {
         return data;
-       // console.log(data)
+        // console.log(data)
       })
       .then((data) => {
         this.setState({
@@ -60,10 +59,10 @@ class App extends React.Component {
           Data: data,
         });
       });
-    };
-   componentDidMount() {
-     this.fetchData();
-    }
+  }
+  componentDidMount() {
+    this.fetchData();
+  }
 
   loadSat() {
     let urls = [];
@@ -79,7 +78,7 @@ class App extends React.Component {
 
   //--------------------------------------render and return--------------------------------
   render() {
-    const { nasa, Data, isLoaded,launchDate } = this.state;
+    const { nasa, Data, isLoaded, launchDate } = this.state;
     return (
       <div>
         <div className="navbar">
@@ -97,18 +96,15 @@ class App extends React.Component {
           {/* <h1>Satellite Tracker</h1> */}
           {/*!isLoaded && <p>Loading...</p>*/}
           <div>
-          <video autoPlay controls muted loop src={nasa} type="video/mp4" />
+            <video autoPlay controls muted loop src={nasa} type="video/mp4" />
           </div>
           <Chart DataSet={Data} />
-          <BarChart DataSets = {launchDate} />
-          <WorldMap  />
+          <BarChart DataSets={launchDate} />
+          <WorldMap />
         </React.Fragment>
         <NEvents />
       </div>
     );
   }
 }
-
-
-
 export default App;
