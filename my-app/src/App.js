@@ -22,7 +22,7 @@ class App extends React.Component {
     const urls = this.loadSat();
 
     const url1 =
-      "https://www.n2yo.com/rest/v1/satellite/above/41.702/-76.014/0/70/0/&apiKey=TY7W6H-2YWZWQ-9W9WEL-4FIH";
+      "https://www.n2yo.com/rest/v1/satellite/above/41.702/-76.014/0/90/0/&apiKey=TY7W6H-2YWZWQ-9W9WEL-4FIH";
     //--------------------------------------fetching url-------------------------------------------------
     fetch(url)
       .then((response) => response.json())
@@ -39,19 +39,19 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         return data;
-        //console.log(data.above);
+        //console.log(data);
       })
       .then((data) => {
         this.setState({
           launchDate: data,
         });
       });
-
     //---------------------------------------fetching urls----------------------------
     Promise.all(urls.map((url) => fetch(url)))
       .then((responses) => Promise.all(responses.map((r) => r.json())))
-      .then((values) => {
-        return values;
+      .then((data) => {
+        return data;
+        // console.log(data)
       })
       .then((data) => {
         this.setState({
@@ -60,7 +60,6 @@ class App extends React.Component {
         });
       });
   }
-
   componentDidMount() {
     this.fetchData();
   }
@@ -69,20 +68,17 @@ class App extends React.Component {
     let urls = [];
     for (let id = 2; id <= 53; id++) {
       let url1 =
-        "https://www.n2yo.com/rest/v1/satellite/above/41.702/-76.014/0/70/" +
+        "https://www.n2yo.com/rest/v1/satellite/above/41.702/-76.014/0/90/" +
         id +
         "/&apiKey=TY7W6H-2YWZWQ-9W9WEL-4FIH";
       urls.push(url1);
     }
     return urls;
-    //console.log(urls)
   }
-  //--------------------------------------react-promise-tracker usePromiseTracker hook---------------------------
 
   //--------------------------------------render and return--------------------------------
   render() {
     const { nasa, Data, isLoaded, launchDate } = this.state;
-    // console.log(Data)
     return (
       <div>
         <div className="navbar">
@@ -98,10 +94,12 @@ class App extends React.Component {
         </div>
         <React.Fragment>
           {/* <h1>Satellite Tracker</h1> */}
-          {!isLoaded && <p>Loading...</p>}
-          <video autoPlay controls muted loop src={nasa} type="video/mp4" />
+          {/*!isLoaded && <p>Loading...</p>*/}
+          <div>
+            <video autoPlay controls muted loop src={nasa} type="video/mp4" />
+          </div>
           <Chart DataSet={Data} />
-          <BarChart YearData={launchDate} />
+          <BarChart DataSets={launchDate} />
           <WorldMap />
         </React.Fragment>
         <NEvents />

@@ -16,7 +16,7 @@ code {
 }
 
 video {
-  width: 50%;
+  width: 50%;	
   margin-left: 25%;
 }
 
@@ -25,9 +25,19 @@ h1 {
   text-align: center;
 }
 
-.charts {
-  width: 80%;
+.charts{
+  width:80%;
 }
+
+.dropdown {
+  font-family: Arial;
+  background-color:whitesmoke;
+  width: 200px;
+  height: 30px;
+  margin-left: 80%;
+  font-size: medium;
+}
+
 
 /* --------------------------------NE events page - 2 ----------------------------*/
 .nevents {
