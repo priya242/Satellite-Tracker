@@ -6,7 +6,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
-  background-image: radial-gradient(#855988, #141852);
+  /*background-image: radial-gradient(#855988, #141852);*/
+  background-image: url("./universe-dark.jpg");
   color: #ffffff;
 }
 

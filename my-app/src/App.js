@@ -80,6 +80,8 @@ class App extends React.Component {
   //--------------------------------------render and return--------------------------------
   render() {
     const { nasa, Data, isLoaded,launchDate } = this.state;
+    console.log(Data)
+    console.log(launchDate)
     return (
       <div>
         <div className="navbar">
