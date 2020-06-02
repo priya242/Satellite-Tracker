@@ -27,7 +27,7 @@ class NEtop extends React.Component {
       maintainAspectRatio: false,
       title: {
         display: true,
-        text: "Most Frequently occurring/occured event",
+        text: "Most prevalent event types",
         position: "bottom",
       },
       legend: {
