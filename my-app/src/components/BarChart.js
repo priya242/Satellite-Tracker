@@ -1,99 +1,146 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
+
 class BarChart extends React.Component {
-  applyLegendSettings() {
-    var yearRange = (document.getElementById("dd").value).split("-");
-    var firstYear = yearRange[0];
-    var lastYear = yearRange[1];
-    for (var i = 0; i < satData.length; i++) {
-      
-    }
-    console.log(x);
+  //constructor(props) {
+    //super(props);
+    //this.state = {
+      //propYears: [],
+      //propStateData: [],
+      //propStateOptions: [],
+      //propStateYearlyData: []
+    //};
+  //}
+
+  state = {
+    years: [],
+    stateData: [],
+    stateOptions: [],
+    stateYearlyData: []
   }
-  render() {
-    var years = [];
-    if (this.props.DataSets.above) {
-      var satData = this.props.DataSets.above;
-      for (var i = 0; i < satData.length; i++) {
-        var date = satData[i].launchDate;
-        var dataObject = new Date(date);
-        if (dataObject.getFullYear()) {
-          years.push(dataObject.getFullYear());
-        }
+
+fetchChartData(local){
+  var localYears = [];
+  if (local) {
+    var satData = local;
+    for (var i = 0; i < satData.length; i++) {
+      var date = satData[i].launchDate;
+      var dataObject = new Date(date);
+      if (dataObject.getFullYear()) {
+        localYears.push(dataObject.getFullYear());        
       }
     }
-    var yearlyData = years.reduce(function (object, satCount) {
-      if (!object[satCount]) {
-        object[satCount] = 1;
-      } else {
-        object[satCount]++;
-      }
-      return object;
-    }, {});
-    
-    const data = {
-      labels: Object.keys(yearlyData),
-      datasets: [
+  }
+  const yearlyData = localYears.reduce(function (object, satCount) {
+    if (!object[satCount]) {
+      object[satCount] = 1;
+    } else {
+      object[satCount]++;
+    }
+    return object;
+  }, {});
+
+  const data = {
+    labels: Object.keys(yearlyData),
+    datasets: [
+      {
+        label: "Satellite Count By Years",
+        backgroundColor: "rgba(255, 215, 0,0.8)",
+        borderColor: "rgba(0 ,0 ,238,1)",
+        borderWidth: 1,
+        hoverBackgroundColor: "rgba(255, 215, 0,0.4)",
+        hoverBorderColor: "rgba(0 ,0 ,238,1)",
+        barPercentage: 0.5,
+        barThickness: 20,
+        data: Object.values(yearlyData),
+      },
+    ],
+  };
+ const options = {
+    legend: {
+      display: true,
+      labels: {
+        fontColor: "#fff",
+      },
+    },
+    scales: {
+      yAxes: [
         {
-          label: "Satellite Launch ",
-          backgroundColor: "rgba(255, 215, 0,0.8)",
-          borderColor: "rgba(0 ,0 ,238,1)",
-          borderWidth: 1,
-          hoverBackgroundColor: "rgba(255, 215, 0,0.4)",
-          hoverBorderColor: "rgba(0 ,0 ,238,1)",
-          barPercentage: 0.5,
-          barThickness: 20,
-          data: Object.values(yearlyData),
+          scaleLabel: {
+            padding: 20,
+          },
+          ticks: {
+            autoSkip: false,
+            fontColor: "#fff",
+            fontSize: 14,
+          },
         },
       ],
-    };
-    const options = {
-      legend: {
-        display: true,
-        labels: {
-          fontColor: "#fff",
+      xAxes: [
+        {
+          ticks: {
+            fontColor: "#fff",
+            fontSize: 14,
+          },
         },
-      },
-      scales: {
-        yAxes: [
-          {
-            scaleLabel: {
-              padding: 20,
-            },
-            ticks: {
-              autoSkip: false,
-              fontColor: "#fff",
-              fontSize: 14,
-            },
-          },
-        ],
-        xAxes: [
-          {
-            ticks: {
-              fontColor: "#fff",
-              fontSize: 14,
-            },
-          },
-        ],
-      },
-    };
+      ],
+    },
+  };
+  this.state.years = localYears;
+  this.state.stateData = data;
+  this.state.stateOptions = options;
+  this.state.stateYearlyData = yearlyData;
+  //this.setState({
+    //propStateData: data,  
+    //propStateOptions: options,
+    //propStateYearlyData : yearlyData,
+    //propYears : localYears
+  //});
+}
 
+  render() {
+  
+    this.fetchChartData(this.props.DataSets.above);
+    const Data = this.state.stateData;
+    const Options = this.state.stateOptions;
     return (
       <div className="barcharts">
         <h1>Active Satellites</h1>
         <select
           className="dropdown"
-          onChange={this.applyLegendSettings}
-          id="dd"
-        >
+          onChange={this.onFieldChange.bind(this)}
+          id="dd">
+          <option value="">Select year range</option>
           <option value="2010-2020">2010-2020</option>
-          <option value="2000-2010">2000-2010</option>
+          <option value="2010-2020">2000-2010</option>
           <option value="1990-2000">1990-2000</option>
           <option value="1980-1990">1980-1990</option>
+          <option value="1970-1980">1970-1980</option>
         </select>
-        <Bar data={data} height={20} width={80} options={options} />
+        <Bar data={Data} height={20} width={80} options={Options} />
       </div>
     );
   }
+
+  onFieldChange(event) {
+    //console.log(yearlyData)
+    var ddValue = document.getElementById("dd");
+    var yearRange = ddValue.value.split("-");
+    var firstYear = yearRange[0];
+    var lastYear = yearRange[1];
+    console.log(firstYear + " " + lastYear);
+    var c = this.state.stateYearlyData;
+    var filteredData = [];
+    //for(var i = 0; i < c.length; i++){
+      //  if(c[i] >= parseInt(firstYear) && c[i] <= parseInt(lastYear)){
+        //  filteredData.push(c[i])
+        //}
+    //}
+    filteredData = {1958: 1, 1960: 10}
+    console.log(filteredData)
+    this.state.stateData = filteredData
+    this.forceUpdate()
+  }
 }
 export default BarChart;
+

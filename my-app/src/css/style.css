@@ -29,6 +29,17 @@ h1 {
   width:80%;
 }
 
+.dropdown {
+  font-family: Arial;
+  background-color:whitesmoke;
+  width: 200px;
+  height: 30px;
+  margin-left: 80%;
+  font-size: medium;
+  
+}
+
+
 /* --------------------------------NE events page - 2 ----------------------------*/
 .nevents {
   /* background-image: linear-gradient(0deg, #141852, #855988); */

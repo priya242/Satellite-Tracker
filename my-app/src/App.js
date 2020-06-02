@@ -96,7 +96,9 @@ class App extends React.Component {
         <React.Fragment>
           {/* <h1>Satellite Tracker</h1> */}
           {/*!isLoaded && <p>Loading...</p>*/}
+          <div>
           <video autoPlay controls muted loop src={nasa} type="video/mp4" />
+          </div>
           <Chart DataSet={Data} />
           <BarChart DataSets = {launchDate} />
           <WorldMap  />
