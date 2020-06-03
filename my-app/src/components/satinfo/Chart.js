@@ -31,14 +31,8 @@ export default function Chart(props) {
   };
 
   return (
-    <div className="charts">
-     <div className="navbar">
-          <span>
-            <b>Satellite Info</b>
-          </span>
-          <div className="nav-controls">
-          </div>
-        </div>
+    <div className="grid-item2">
+    
       {!isLoaded && (
         <div
           style={{

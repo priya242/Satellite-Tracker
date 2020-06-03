@@ -9,8 +9,9 @@ class NEworldmap extends React.Component {
     require("highcharts/modules/map")(Highcharts);
 
     const data = this.props.worlddata;
-
+    console.log(data)
     const map = mapDataWorld;
+    console.log(map)
 
     const mapOptions = {
       chart: {
