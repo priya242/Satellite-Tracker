@@ -53,7 +53,9 @@ class WorldMap extends React.Component {
           "{point.name}<br>" +
            "Lat: {point.lat} " + 
            "Lon: {point.lon}<br>",
-           backgroundColor: "rgba(0, 0, 0, 0.85)",
+           //backgroundColor: "rgba(0, 0, 0, 0.85)",
+           backgroundColor:"rgb(50, 62, 116)",
+           //backgroundImage:"radial-gradient(rgb(50, 62, 116), rgb(18, 6, 75))",
         style: {
           color: "#F0F0F0",
         },
@@ -72,7 +74,7 @@ class WorldMap extends React.Component {
           type: "mappoint",
           turboThreshold: 3300,
           name: "Satellites",
-          color: "rgba(255, 215, 0)",
+          color: "#C29710",
           dataLabels: {
             enabled: false,
             format: "{point.name}",

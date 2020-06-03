@@ -65,7 +65,7 @@ class BarData extends React.Component {
 
     return (
       <div>
-        <div>
+        
           <select
             name="Select year"
             className="dropdown"
@@ -73,7 +73,7 @@ class BarData extends React.Component {
           >
             {selectops}
           </select>
-        </div>
+        
         <BarChart satdata={this.state.yearlyData} />
       </div>
     );

@@ -11,13 +11,15 @@ class BarChart extends React.Component{
       datasets: [
         {
           label: "Satellite Count By Years",
-          backgroundColor: "rgba(255, 215, 0,0.8)",
+          //backgroundColor: "rgba(255, 215, 0,0.8)",
+          //backgroundImage:"linear-gradient(	#ffce00,#ff9a00,#ff5a00)",
+          backgroundColor:"#C29710",
           borderColor: "rgba(0 ,0 ,238,1)",
           borderWidth: 1,
           hoverBackgroundColor: "rgba(255, 215, 0,0.4)",
           hoverBorderColor: "rgba(0 ,0 ,238,1)",
-          barPercentage: 0.2,
-          categoryPercentage:0.2,
+          barPercentage: 1,
+          categoryPercentage:1,
           barThickness: 20,
           data: Object.values(Datasets),
         },
