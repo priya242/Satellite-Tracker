@@ -2,6 +2,7 @@ import React from "react";
 import NEworldmap from "./nevents/NEworldmap";
 import NEtop from "./nevents/NEtop";
 import NEeach from "./nevents/NEeach";
+import NEheatmap from "./nevents/NEheatmap";
 
 class NEvents extends React.Component {
   // const NASA_API_KEY = encodeURIComponent(process.env.REACT_APP_NE_API_KEY);
@@ -13,6 +14,7 @@ class NEvents extends React.Component {
       bar: [],
       worlddata: [],
       area_data_mag: [],
+      bubble: [],
     };
     this.fetchData = this.fetchData.bind(this);
     this.daysChange = this.daysChange.bind(this);
@@ -47,10 +49,16 @@ class NEvents extends React.Component {
     let l_bar = {};
     let l_worlddata = [];
     let l_date_mag = [];
+    let l_catid = {}; //category with numeric catid for heatmap
+    let l_catid_count = 0;
+    let l_catdate = {};
+
     for (let event of data) {
       l_count++; //total number of events
       let title = event.title;
       let categories = "";
+      let current_cat = []; //categories for the single event in the loop
+
       //CATEGORIES information for each child component
       for (let category of event.categories) {
         //world + area
@@ -61,7 +69,14 @@ class NEvents extends React.Component {
         } else {
           l_bar[category.id] = 1;
         }
+        //HEATMAP
+        if (!(category.id in l_catid)) {
+          l_catid_count += 1;
+          l_catid[category.id] = l_count; // {category1: 1, category2: 2, category3: 3 ... }
+        }
+        current_cat.push(category.id);
       }
+
       //AREA Map For DATE and MAGNITUDE
       let date_mag = {
         title: title,
@@ -70,7 +85,9 @@ class NEvents extends React.Component {
         geometry: event.geometry,
       };
       l_date_mag.push(date_mag);
+
       //WORLD MAP DATA per lat,long
+      //HEATMAP
       for (let geometry of event.geometry) {
         //world
         //one event one location
@@ -92,6 +109,17 @@ class NEvents extends React.Component {
             worldevent["lon"] = coord[0];
             worldevent["lat"] = coord[1];
             l_worlddata.push(worldevent);
+          }
+        }
+
+        //heatmap
+        for (let c of current_cat) {
+          if (geometry.date in l_catdate) {
+            if (c == Object.keys(l_catdate[geometry.date])[0]) {
+              l_catdate[geometry.date].category += 1;
+            } else {
+              l_catdate.push();
+            }
           }
         }
       }
@@ -144,6 +172,7 @@ class NEvents extends React.Component {
           </div>
           <NEworldmap worlddata={this.state.worlddata} />
           <NEeach area_data_mag={this.state.area_data_mag} />
+          <NEheatmap />
         </div>
       </div>
     );
