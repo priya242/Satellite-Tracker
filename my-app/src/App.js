@@ -78,13 +78,9 @@ class App extends React.Component {
 
   //--------------------------------------render and return--------------------------------
   render() {
-<<<<<<< HEAD
     const { nasa, Data, isLoaded, launchDate } = this.state;
-=======
-    const { nasa, Data, isLoaded,launchDate } = this.state;
-    console.log(Data)
-    console.log(launchDate)
->>>>>>> satellite-tracking
+    console.log(Data);
+    console.log(launchDate);
     return (
       <div>
         <div className="navbar">

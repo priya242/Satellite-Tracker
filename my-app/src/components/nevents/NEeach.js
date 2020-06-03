@@ -32,7 +32,6 @@ class NEeach extends React.Component {
     return (
       <div>
         <div className="nav-controls">
-          Event:{" "}
           <select
             name="Event"
             className="area_select"

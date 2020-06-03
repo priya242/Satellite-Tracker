@@ -49,9 +49,8 @@ class NEvents extends React.Component {
     let l_bar = {};
     let l_worlddata = [];
     let l_date_mag = [];
-    let l_catid = {}; //category with numeric catid for heatmap
-    let l_catid_count = 0;
-    let l_catdate = {};
+    // let l_catid = []; //category with numeric catid
+    let l_dateid = [];
 
     for (let event of data) {
       l_count++; //total number of events
@@ -70,11 +69,11 @@ class NEvents extends React.Component {
           l_bar[category.id] = 1;
         }
         //HEATMAP
-        if (!(category.id in l_catid)) {
-          l_catid_count += 1;
-          l_catid[category.id] = l_count; // {category1: 1, category2: 2, category3: 3 ... }
-        }
-        current_cat.push(category.id);
+        // if (!(category.id in l_catid)) {
+        //   l_catid_count += 1;
+        //   l_catid[category.id] = l_count; // {category1: 1, category2: 2, category3: 3 ... }
+        // }
+        // current_cat.push(category.id);
       }
 
       //AREA Map For DATE and MAGNITUDE
@@ -113,15 +112,15 @@ class NEvents extends React.Component {
         }
 
         //heatmap
-        for (let c of current_cat) {
-          if (geometry.date in l_catdate) {
-            if (c == Object.keys(l_catdate[geometry.date])[0]) {
-              l_catdate[geometry.date].category += 1;
-            } else {
-              l_catdate.push();
-            }
-          }
-        }
+        // for (let c of current_cat) {
+        //   if (geometry.date in l_catdate) {
+        //     if (c == Object.keys(l_catdate[geometry.date])[0]) {
+        //       l_catdate[geometry.date].category += 1;
+        //     } else {
+        //       l_catdate[geometry.date] =
+        //     }
+        //   }
+        // }
       }
     }
 
