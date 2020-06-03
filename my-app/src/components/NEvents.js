@@ -49,9 +49,9 @@ class NEvents extends React.Component {
     let l_bar = {};
     let l_worlddata = [];
     let l_date_mag = [];
-    let l_ccount = 0; //to calculate new id for each category
-    let l_catdate = {}; //final category_date dictionary for bubble chart
-    let l_catid = {}; //category with numeric catid for bubble char y-axis
+    let l_catid = {}; //category with numeric catid for heatmap
+    let l_catid_count = 0;
+    let l_catdate = {};
 
     for (let event of data) {
       l_count++; //total number of events
@@ -69,13 +69,14 @@ class NEvents extends React.Component {
         } else {
           l_bar[category.id] = 1;
         }
-        //BUBBLE
-        if (category.id in l_catid) {
-        } else {
-          l_ccount += 1;
+        //HEATMAP
+        if (!(category.id in l_catid)) {
+          l_catid_count += 1;
           l_catid[category.id] = l_count; // {category1: 1, category2: 2, category3: 3 ... }
         }
+        current_cat.push(category.id);
       }
+
       //AREA Map For DATE and MAGNITUDE
       let date_mag = {
         title: title,
@@ -84,7 +85,9 @@ class NEvents extends React.Component {
         geometry: event.geometry,
       };
       l_date_mag.push(date_mag);
+
       //WORLD MAP DATA per lat,long
+      //HEATMAP
       for (let geometry of event.geometry) {
         //world
         //one event one location
@@ -106,6 +109,17 @@ class NEvents extends React.Component {
             worldevent["lon"] = coord[0];
             worldevent["lat"] = coord[1];
             l_worlddata.push(worldevent);
+          }
+        }
+
+        //heatmap
+        for (let c of current_cat) {
+          if (geometry.date in l_catdate) {
+            if (c == Object.keys(l_catdate[geometry.date])[0]) {
+              l_catdate[geometry.date].category += 1;
+            } else {
+              l_catdate.push();
+            }
           }
         }
       }
