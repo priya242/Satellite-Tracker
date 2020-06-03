@@ -6,6 +6,18 @@ const mapDataWorld = {
   copyrightShort: "Natural Earth",
   copyrightUrl: "http://www.naturalearthdata.com",
   crs: { type: "name", properties: { name: "urn:ogc:def:crs:EPSG:54030" } },
+  "hc-transform": {
+    default: {
+      crs:
+        "+proj=mill +satlat_0=0 +satlng_0=0 +R_A +datum=WGS84 +units=m +no_defs",
+      scale: 1.70885469175e-5,
+      jsonres: 15.5,
+      jsonmarginX: -999,
+      jsonmarginY: 9851.0,
+      xoffset: -19803993.2213,
+      yoffset: 12635908.1982,
+    },
+  },
   features: [
     {
       type: "Feature",

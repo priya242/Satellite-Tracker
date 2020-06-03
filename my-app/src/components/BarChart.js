@@ -16,7 +16,8 @@ class BarChart extends React.Component{
           borderWidth: 1,
           hoverBackgroundColor: "rgba(255, 215, 0,0.4)",
           hoverBorderColor: "rgba(0 ,0 ,238,1)",
-          barPercentage: 0.5,
+          barPercentage: 0.2,
+          categoryPercentage:0.2,
           barThickness: 20,
           data: Object.values(Datasets),
         },
@@ -44,6 +45,8 @@ class BarChart extends React.Component{
         ],
         xAxes: [
           {
+            categoryPercentage: 1.0,
+            barPercentage: 1.0,
             ticks: {
               fontColor: "#fff",
               fontSize: 14,
@@ -56,7 +59,7 @@ class BarChart extends React.Component{
     return(
       <div>
       <h1>Active Satellites</h1>
-      <Bar data={data} height={20} width={80} options={options} />
+      <Bar data={data} height={30} width={80} options={options} />
       </div>
     );      
   }

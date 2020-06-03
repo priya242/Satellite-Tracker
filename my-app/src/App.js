@@ -15,8 +15,6 @@ class App extends React.Component {
       SatCat: [],
       launchDate: [],
       isLoaded: false,
-      years:[],
-      yearlyData:[],
     };
   }
   fetchData() {
@@ -81,7 +79,7 @@ class App extends React.Component {
 
   //--------------------------------------render and return--------------------------------
   render() {
-    const { nasa, Data, isLoaded, launchDate,yearlyData,years} = this.state;
+    const { nasa, Data,launchDate} = this.state;
     //console.log(launchDate)
     return (
       <div>
@@ -104,7 +102,7 @@ class App extends React.Component {
           </div>
           <Chart DataSet={Data} />
           <BarData DataSets={launchDate} />
-          <WorldMap />
+          <WorldMap WorldDataSet = {launchDate}/>
         </React.Fragment>
         <NEvents />
       </div>

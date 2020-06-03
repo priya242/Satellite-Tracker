@@ -3,17 +3,38 @@ import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import mapDataWorld from "./mapDataWorld";
-
-export default function WorldMap(props) {
+class WorldMap extends React.Component {
   // Load Highcharts Maps as a module
-  require("highcharts/modules/map")(Highcharts);
+  render() {
+    require("highcharts/modules/map")(Highcharts);
+    const tmpdata = this.props.WorldDataSet;
+    const map = mapDataWorld;
+    let data = [];
 
-  // Create the chart
-  const mapOptions = {
-    title: {
-      text: "",
-    },
-    colorAxis: {
+    for (var i = 0; i < tmpdata.length; i++) {
+      let wd = {};
+      wd["name"] = tmpdata[i].satname;
+      wd["lat"] = tmpdata[i].satlat;
+      wd["lon"] = tmpdata[i].satlng;
+      data.push(wd);
+    }
+    console.log(data);
+    // Create the chart
+    const mapOptions = {
+      chart: {
+        backgroundColor: {
+          linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+          stops: [
+            [0, "#2a2a2b"],
+            [1, "#3e3e40"],
+          ],
+        },
+        plotBorderColor: "#606063",
+      },
+      title: {
+        text: "",
+      },
+      /**  colorAxis: {
       min: 0,
       stops: [
         [0.2, "#0000FF"],
@@ -22,105 +43,58 @@ export default function WorldMap(props) {
         [0.8, "#87CEFF"],
         [0.2, "B0E2FF"],
       ],
-    },
+    },**/
 
-    series: [
-      {
-        mapData: mapDataWorld,
-        name: "Satellites",
-        data: [
-          ["ao", 1],
-          ["dz", 6],
-          ["ar", 25],
-          ["at", 3],
-          ["au", 27],
-          ["az", 3],
-          ["be", 4],
-          ["by", 2],
-          ["bg", 1],
-          ["bo", 1],
-          ["ca", 63],
-          ["br", 91],
-          ["cl", 3],
-          ["co", 2],
-          ["cr", 1],
-          ["cz", 8],
-          ["dk", 12],
-          ["ec", 2],
-          ["eg", 9],
-          ["ee", 1],
-          ["fi", 8],
-          ["fr", 1318],
-          ["de", 85],
-          ["gh", 1],
-          ["gr", 5],
-          ["hu", 3],
-          ["in", 696],
-          ["id", 19],
-          ["ir", 11],
-          ["iq", 1],
-          ["il", 34],
-          ["it", 46],
-          ["jo", 1],
-          ["jp", 612],
-          ["kz", 8],
-          ["ke", 1],
-          ["la", 1],
-          ["lk", 1],
-          ["lt", 5],
-          ["lu", 2],
-          ["ma", 2],
-          ["my", 7],
-          ["mx", 10],
-          ["mn", 1],
-          ["nl", 9],
-          ["ng", 6],
-          ["kp", 6],
-          ["no", 11],
-          ["np", 1],
-          ["nz", 1],
-          ["pk", 7],
-          ["pe", 4],
-          ["pl", 6],
-          ["pt", 1],
-          ["cn", 5556],
-          ["tw", 16],
-          ["ro", 1],
-          ["ph", 3],
-          ["rw", 1],
-          ["za", 7],
-          ["sa", 15],
-          ["sd", 1],
-          ["sg", 12],
-          ["kr", 30],
-          ["es", 30],
-          ["sg", 2],
-          ["se", 12],
-          ["ch", 4],
-          ["th", 10],
-          ["mc", 1],
-          ["tr", 15],
-          ["ae", 10],
-          ["gb", 142],
-          ["ua", 9],
-          ["uy", 1],
-          ["us", 13517],
-          ["br", 1],
-          ["ve", 3],
-          ["vn", 5],
-        ],
+      tooltip: {
+        pointFormat:
+          "{point.name}<br>" + "Lat: {point.lat} " + "Lon: {point.lon}<br>",
+
+        backgroundColor: "rgba(0, 0, 0, 0.85)",
+        style: {
+          color: "#F0F0F0",
+        },
       },
-    ],
-  };
 
-  return (
-    <div>
-      <h1>Highmaps</h1>
-      <HighchartsReact
-        options={mapOptions}
-        constructorType={"mapChart"}
-        highcharts={Highcharts}
-      />
-    </div>
-  );
+      mapNavigation: {
+        enabled: true,
+      },
+
+      series: [
+        {
+          mapData: map,
+          name: "Satellites",
+          borderColor: "#A0A0A0",
+          nullColor: "rgba(200, 200, 200, 0.3)",
+          showInLegend: false,
+        },
+        {
+          type: "mappoint",
+          name: "Satellite",
+          color: "#90ee7e",
+          dataLabels: {
+            enabled: true,
+            format: "{point.name}",
+            color: "#F0F0F3",
+          },
+          marker: {
+            lineColor: "#333",
+          },
+          data: data,
+          showInLegend: false,
+        },
+      ],
+    };
+
+    return (
+      <div>
+        <h1>Highmaps</h1>
+        <HighchartsReact
+          options={mapOptions}
+          constructorType={"mapChart"}
+          highcharts={Highcharts}
+        />
+      </div>
+    );
+  }
 }
+export default WorldMap;
