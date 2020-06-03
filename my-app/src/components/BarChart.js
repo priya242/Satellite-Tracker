@@ -17,7 +17,6 @@ class BarChart extends React.Component {
     stateYearlyData: []
   }
 }
-
 fetchChartData(local){
   var localYears = [];
   if (local) {
@@ -30,6 +29,7 @@ fetchChartData(local){
       }
     }
   }
+  
   const yearlyData = localYears.reduce(function (object, satCount) {
     if (!object[satCount]) {
       object[satCount] = 1;
@@ -90,12 +90,6 @@ fetchChartData(local){
  this.state.stateData = data;
  this.state.stateOptions = options;
  this.state.stateYearlyData = yearlyData;
-  //this.setState({
-    //propStateData: data,  
-    //propStateOptions: options,
-    //propStateYearlyData : yearlyData,
-    //propYears : localYears
-  //});
 }
 
   render(boolVal) {
@@ -105,6 +99,7 @@ fetchChartData(local){
     return (
       <div className="barcharts">
         <h1>Active Satellites</h1>
+       
         <select
           className="dropdown"
           onChange={this.onFieldChange.bind(this)}

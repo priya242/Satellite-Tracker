@@ -7,7 +7,7 @@ export default function Chart(props) {
   var isLoaded = false;
 
   for (var i = 0; i < props.DataSet.length; i++) {
-    if (props.DataSet[i].info.satcount > 4) {
+    if (props.DataSet[i].info.satcount > 20) {
       label.push(props.DataSet[i].info.category);
       Data.push(props.DataSet[i].info.satcount);
     }
@@ -58,7 +58,7 @@ export default function Chart(props) {
         </div>
       )}
       <HorizontalBar
-        height={220}
+        height={120}
         data={data}
         options={{
           legend: {
