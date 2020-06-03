@@ -1,39 +1,132 @@
 import React from "react";
-import { Bubble } from "react-chartjs-2";
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
 
 class NEbubble extends React.Component {
   render() {
-    let data = {
-      datasets: [
+    const data = [
+      [0, 0, 10],
+      [0, 1, 19],
+      [0, 2, 8],
+      [0, 3, 24],
+      [0, 4, 67],
+      [1, 0, 92],
+      [1, 1, 58],
+      [1, 2, 78],
+      [1, 3, 117],
+      [1, 4, 48],
+      [2, 0, 35],
+      [2, 1, 15],
+      [2, 2, 123],
+      [2, 3, 64],
+      [2, 4, 52],
+      [3, 0, 72],
+      [3, 1, 132],
+      [3, 2, 114],
+      [3, 3, 19],
+      [3, 4, 16],
+      [4, 0, 38],
+      [4, 1, 5],
+      [4, 2, 8],
+      [4, 3, 117],
+      [4, 4, 115],
+      [5, 0, 88],
+      [5, 1, 32],
+      [5, 2, 12],
+      [5, 3, 6],
+      [5, 4, 120],
+      [6, 0, 13],
+      [6, 1, 44],
+      [6, 2, 88],
+      [6, 3, 98],
+      [6, 4, 96],
+      [7, 0, 31],
+      [7, 1, 1],
+      [7, 2, 82],
+      [7, 3, 32],
+      [7, 4, 30],
+      [8, 0, 85],
+      [8, 1, 97],
+      [8, 2, 123],
+      [8, 3, 64],
+      [8, 4, 84],
+      [9, 0, 47],
+      [9, 1, 114],
+      [9, 2, 31],
+      [9, 3, 48],
+      [9, 4, 91],
+    ];
+    const options = {
+      xAxis: {
+        categories: [
+          "Alexander",
+          "Marie",
+          "Maximilian",
+          "Sophia",
+          "Lukas",
+          "Maria",
+          "Leon",
+          "Anna",
+          "Tim",
+          "Laura",
+        ],
+      },
+      yAxis: {
+        categories: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        title: null,
+        reversed: true,
+      },
+      colorAxis: {
+        min: 0,
+        minColor: "#FFFFFF",
+        maxColor: Highcharts.getOptions().colors[0],
+      },
+      legend: {
+        align: "right",
+        layout: "vertical",
+        margin: 0,
+        verticalAlign: "top",
+        y: 25,
+        symbolHeight: 280,
+      },
+      responsive: {
+        rules: [
+          {
+            condition: {
+              maxWidth: 500,
+            },
+            chartOptions: {
+              yAxis: {
+                labels: {
+                  formatter: function () {
+                    return this.value.charAt(0);
+                  },
+                },
+              },
+            },
+          },
+        ],
+      },
+      series: [
         {
-          label: "Earthquakes",
-          data: [
-            { x: 0, y: 1, r: 0 },
-            { x: 1, y: 1, r: 8 },
-            { x: 2, y: 1, r: 7 },
-            { x: 3, y: 1, r: 1 },
-            { x: 4, y: 1, r: 2 },
-            { x: 5, y: 1, r: 3 },
-          ],
-          backgroundColor: "lightblue",
-        },
-        {
-          label: "Volcanoes",
-          data: [
-            { x: 0, y: 2, r: 1 },
-            { x: 1, y: 2, r: 2 },
-            { x: 2, y: 2, r: 3 },
-            { x: 3, y: 2, r: 1 },
-            { x: 4, y: 2, r: 2 },
-            { x: 5, y: 2, r: 3 },
-          ],
-          backgroundColor: "pink",
+          type: "heatmap",
+          name: "Sales per employee",
+          borderWidth: 1,
+          data: data,
+          dataLabels: {
+            enabled: true,
+            color: "#000000",
+          },
         },
       ],
     };
-    let options = {};
-    return <Bubble data={data} options={options} />;
+    return (
+      <HighchartsReact
+        options={options}
+        constructorType={"mapChart"}
+        highcharts={Highcharts}
+      />
+    );
   }
 }
-
 export default NEbubble;
