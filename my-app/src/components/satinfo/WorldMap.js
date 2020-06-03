@@ -2,14 +2,14 @@ import React from "react";
 //import { render } from "react-dom";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import mapDataWorld from "./mapDataWorld";
+import mapDataWorld from "./sat_mapDataWorld";
 class WorldMap extends React.Component {
   // Load Highcharts Maps as a module
   render() {
     require("highcharts/modules/map")(Highcharts);
     const tmpdata = this.props.WorldDataSet;
     const map = mapDataWorld;
-    let data = [];
+    var data = [];
 
     for (var i = 0; i < tmpdata.length; i++) {
       let wd = {};
@@ -34,6 +34,9 @@ class WorldMap extends React.Component {
       title: {
         text: "",
       },
+      subtitle:{
+        text:"",
+      },
       /**  colorAxis: {
       min: 0,
       stops: [
@@ -43,36 +46,35 @@ class WorldMap extends React.Component {
         [0.8, "#87CEFF"],
         [0.2, "B0E2FF"],
       ],
-    },**/
+    }, **/
 
       tooltip: {
         pointFormat:
-          "{point.name}<br>" + "Lat: {point.lat} " + "Lon: {point.lon}<br>",
-
-        backgroundColor: "rgba(0, 0, 0, 0.85)",
+          "{point.name}<br>" +
+           "Lat: {point.lat} " + 
+           "Lon: {point.lon}<br>",
+           backgroundColor: "rgba(0, 0, 0, 0.85)",
         style: {
           color: "#F0F0F0",
         },
       },
 
-      mapNavigation: {
-        enabled: true,
-      },
 
       series: [
         {
+          name: "Basemap",
           mapData: map,
-          name: "Satellites",
           borderColor: "#A0A0A0",
-          nullColor: "rgba(200, 200, 200, 0.3)",
+          nullColor: "#4c4cff",
           showInLegend: false,
         },
         {
           type: "mappoint",
-          name: "Satellite",
-          color: "#90ee7e",
+          turboThreshold: 3300,
+          name: "Satellites",
+          color: "rgba(255, 215, 0)",
           dataLabels: {
-            enabled: true,
+            enabled: false,
             format: "{point.name}",
             color: "#F0F0F3",
           },
@@ -83,17 +85,19 @@ class WorldMap extends React.Component {
           showInLegend: false,
         },
       ],
-    };
-
-    return (
-      <div className="grid-item4">
-        <HighchartsReact
-          options={mapOptions}
-          constructorType={"mapChart"}
-          highcharts={Highcharts}
-        />
-      </div>
-    );
+    }; 
+      return (
+        <div className="grid-item4">
+          <HighchartsReact
+            options={mapOptions}
+            constructorType={"mapChart"}
+            highcharts={Highcharts}
+          />
+        </div>
+      );
+    }
   }
-}
-export default WorldMap;
+  export default WorldMap;
+    
+   
+    
