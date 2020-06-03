@@ -68,7 +68,7 @@ class BarData extends React.Component {
         <div>
           <select
             name="Select year"
-            className="year_select"
+            className="dropdown"
             onChange={this.handleChange}
           >
             {selectops}

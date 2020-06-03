@@ -6,10 +6,21 @@ class App extends React.Component {
   //--------------------------------------render and return--------------------------------
   render() {
     return (
-      <React.Fragment>
+        <React.Fragment>
+        <div className="navbar">
+          <span>
+            <b>Sattelite Tracker</b>
+          </span>
+          <div className="nav-controls">
+            <div>Satellite Info</div>
+            <a href="/">
+              <div>Natural Events</div>
+            </a>
+          </div>
+        </div>
         <SatInfo />
         <NEvents />
-      </React.Fragment>
+        </React.Fragment>
     );
   }
 }

@@ -78,29 +78,18 @@ class SatInfo extends React.Component {
     const { nasa, Data, launchDate } = this.state;
     //console.log(launchDate)
     return (
-      <div>
-        <div className="navbar">
-          <span>
-            <b>Sattelite Tracker</b>
-          </span>
-          <div className="nav-controls">
-            <div>Satellite Info</div>
-            <a href="/">
-              <div>Natural Events</div>
-            </a>
-          </div>
+        <div className = "satinfo">
+        <h2>Total Satellites : {launchDate.length}</h2>
+        <div className="satinfo_container">
+        <div className = "grid-item-video">
+          <video autoPlay controls muted loop src={nasa} type="video/mp4" />
         </div>
-        <React.Fragment>
-          {/* <h1>Satellite Tracker</h1> */}
-          {/*!isLoaded && <p>Loading...</p>*/}
-          <div>
-            <video autoPlay controls muted loop src={nasa} type="video/mp4" />
-          </div>
-          <Chart DataSet={Data} />
-          <BarData DataSets={launchDate} />
-          <WorldMap WorldDataSet={launchDate} />
-        </React.Fragment>
-      </div>
+        <Chart DataSet={Data} />
+        <BarData DataSets={launchDate} />
+        <WorldMap WorldDataSet={launchDate} />
+        </div>
+        </div>
+      
     );
   }
 }

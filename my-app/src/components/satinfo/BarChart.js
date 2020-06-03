@@ -57,9 +57,8 @@ class BarChart extends React.Component{
     };
 
     return(
-      <div>
-      <h1>Active Satellites</h1>
-      <Bar data={data} height={30} width={80} options={options} />
+      <div className = "grid-item3">
+      <Bar data={data} height={100} width ={100} options={options} />
       </div>
     );      
   }
