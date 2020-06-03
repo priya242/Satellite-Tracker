@@ -17,7 +17,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 .satinfo_container {
   display: grid;
   grid-template-rows: 45vh 45vh;
@@ -29,7 +28,6 @@ code {
 video{
   width: 98%;
 }
-
 .grid-item-video{
   grid-area:1/3/2/5;
   background-image:radial-gradient(rgb(50, 62, 116), rgb(18, 6, 75)); 
@@ -60,7 +58,7 @@ h1 {
 
 .dropdown {
   font-family: Arial;
-  background-color:whitesmoke;
+  background-color: whitesmoke;
   width: 200px;
   height: 30px;
   font-size: medium;
@@ -70,7 +68,6 @@ h1 {
   margin: 0 auto;
   padding: 1em;
 }
-
 
 /* --------------------------------NE events page - 2 ----------------------------*/
 .nevents {
@@ -138,6 +135,10 @@ h1 {
 .nevents_world {
   height: 100%;
   width: 100%;
+  grid-column: 2 / span 3;
+}
+
+.nevents_heatmap {
   grid-column: 2 / span 3;
 }
 

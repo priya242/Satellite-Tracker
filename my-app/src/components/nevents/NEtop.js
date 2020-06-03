@@ -12,7 +12,12 @@ class NEtop extends React.Component {
       labels: labels,
       datasets: [
         {
-          backgroundColor: ["#972f48", "#972f48", "#972f48", "#972f48"],
+          backgroundColor: [
+            "linear-gradient(#FF9C00, #01D4B4)",
+            "#972f48",
+            "#972f48",
+            "#972f48",
+          ],
           hoverBackgroundColor: ["#772249", "#772249", "#772249", "#772249"],
           hoverBorderColor: ["#772249", "#772249", "#772249", "#772249"],
           hoverBorderWidth: 0,
