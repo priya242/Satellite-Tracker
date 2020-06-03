@@ -2,6 +2,7 @@ import React from "react";
 import NEworldmap from "./nevents/NEworldmap";
 import NEtop from "./nevents/NEtop";
 import NEeach from "./nevents/NEeach";
+import NEbubble from "./nevents/NEbubble";
 
 class NEvents extends React.Component {
   // const NASA_API_KEY = encodeURIComponent(process.env.REACT_APP_NE_API_KEY);
@@ -13,6 +14,7 @@ class NEvents extends React.Component {
       bar: [],
       worlddata: [],
       area_data_mag: [],
+      bubble: [],
     };
     this.fetchData = this.fetchData.bind(this);
     this.daysChange = this.daysChange.bind(this);
@@ -47,10 +49,16 @@ class NEvents extends React.Component {
     let l_bar = {};
     let l_worlddata = [];
     let l_date_mag = [];
+    let l_ccount = 0; //to calculate new id for each category
+    let l_catdate = {}; //final category_date dictionary for bubble chart
+    let l_catid = {}; //category with numeric catid for bubble char y-axis
+
     for (let event of data) {
       l_count++; //total number of events
       let title = event.title;
       let categories = "";
+      let current_cat = []; //categories for the single event in the loop
+
       //CATEGORIES information for each child component
       for (let category of event.categories) {
         //world + area
@@ -60,6 +68,12 @@ class NEvents extends React.Component {
           l_bar[category.id]++;
         } else {
           l_bar[category.id] = 1;
+        }
+        //BUBBLE
+        if (category.id in l_catid) {
+        } else {
+          l_ccount += 1;
+          l_catid[category.id] = l_count; // {category1: 1, category2: 2, category3: 3 ... }
         }
       }
       //AREA Map For DATE and MAGNITUDE
@@ -144,6 +158,7 @@ class NEvents extends React.Component {
           </div>
           <NEworldmap worlddata={this.state.worlddata} />
           <NEeach area_data_mag={this.state.area_data_mag} />
+          <NEbubble />
         </div>
       </div>
     );
