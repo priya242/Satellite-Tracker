@@ -2,8 +2,9 @@ import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-class NEbubble extends React.Component {
+class NEheatmap extends React.Component {
   render() {
+    require("highcharts/modules/heatmap")(Highcharts);
     const data = [
       [0, 0, 10],
       [0, 1, 19],
@@ -57,6 +58,15 @@ class NEbubble extends React.Component {
       [9, 4, 91],
     ];
     const options = {
+      chart: {
+        type: "heatmap",
+        // marginTop: 40,
+        // marginBottom: 80,
+        // plotBorderWidth: 1,
+      },
+      title: {
+        text: "Sales per employee per weekday",
+      },
       xAxis: {
         categories: [
           "Alexander",
@@ -70,11 +80,11 @@ class NEbubble extends React.Component {
           "Tim",
           "Laura",
         ],
+        tickLength: 5,
       },
       yAxis: {
         categories: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         title: null,
-        reversed: true,
       },
       colorAxis: {
         min: 0,
@@ -121,12 +131,14 @@ class NEbubble extends React.Component {
       ],
     };
     return (
-      <HighchartsReact
-        options={options}
-        constructorType={"mapChart"}
-        highcharts={Highcharts}
-      />
+      <div className="nevents_heatmap">
+        <HighchartsReact
+          options={options}
+          constructorType={"chart"}
+          highcharts={Highcharts}
+        />
+      </div>
     );
   }
 }
-export default NEbubble;
+export default NEheatmap;

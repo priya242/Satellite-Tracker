@@ -2,7 +2,7 @@ import React from "react";
 import NEworldmap from "./nevents/NEworldmap";
 import NEtop from "./nevents/NEtop";
 import NEeach from "./nevents/NEeach";
-import NEbubble from "./nevents/NEbubble";
+import NEheatmap from "./nevents/NEheatmap";
 
 class NEvents extends React.Component {
   // const NASA_API_KEY = encodeURIComponent(process.env.REACT_APP_NE_API_KEY);
@@ -158,7 +158,7 @@ class NEvents extends React.Component {
           </div>
           <NEworldmap worlddata={this.state.worlddata} />
           <NEeach area_data_mag={this.state.area_data_mag} />
-          <NEbubble />
+          <NEheatmap />
         </div>
       </div>
     );
