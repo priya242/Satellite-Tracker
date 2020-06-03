@@ -1,6 +1,7 @@
 import React from "react";
 import Chart from "./components/Chart";
 import BarChart from "./components/BarChart";
+import BarData from "./components/BarData";
 import "./css/style.css";
 import WorldMap from "./components/WorldMap";
 import NEvents from "./components/NEvents";
@@ -14,6 +15,8 @@ class App extends React.Component {
       SatCat: [],
       launchDate: [],
       isLoaded: false,
+      years:[],
+      yearlyData:[],
     };
   }
   fetchData() {
@@ -43,7 +46,7 @@ class App extends React.Component {
       })
       .then((data) => {
         this.setState({
-          launchDate: data,
+          launchDate: data.above,
         });
       });
     //---------------------------------------fetching urls----------------------------
@@ -78,13 +81,8 @@ class App extends React.Component {
 
   //--------------------------------------render and return--------------------------------
   render() {
-<<<<<<< HEAD
-    const { nasa, Data, isLoaded, launchDate } = this.state;
-=======
-    const { nasa, Data, isLoaded,launchDate } = this.state;
-    console.log(Data)
-    console.log(launchDate)
->>>>>>> satellite-tracking
+    const { nasa, Data, isLoaded, launchDate,yearlyData,years} = this.state;
+    //console.log(launchDate)
     return (
       <div>
         <div className="navbar">
@@ -105,7 +103,7 @@ class App extends React.Component {
             <video autoPlay controls muted loop src={nasa} type="video/mp4" />
           </div>
           <Chart DataSet={Data} />
-          <BarChart DataSets={launchDate} />
+          <BarData DataSets={launchDate} />
           <WorldMap />
         </React.Fragment>
         <NEvents />
