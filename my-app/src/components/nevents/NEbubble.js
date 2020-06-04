@@ -25,6 +25,11 @@ class NEbubble extends React.Component {
       title: {
         display: true,
         text: "Events per days",
+        fontSize: 16,
+        // fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+        fontColor: "#FCFCFC",
+        fontStyle: "bold",
+        padding: 16,
       },
       legend: {
         display: false,
@@ -34,7 +39,9 @@ class NEbubble extends React.Component {
         yAxes: [
           {
             gridLines: {
-              display: false,
+              display: true,
+              color: "rgba(0, 0, 255, 0.2)", //color of the background
+              zeroLineColor: "#FCFCFC",
             },
             ticks: {
               fontColor: "#FCFCFC",
@@ -49,7 +56,9 @@ class NEbubble extends React.Component {
         xAxes: [
           {
             gridLines: {
-              display: false,
+              display: true,
+              color: "rgba(0, 0, 255, 0.2)", //color of the background
+              zeroLineColor: "#FCFCFC",
             },
             ticks: {
               fontColor: "#FCFCFC",

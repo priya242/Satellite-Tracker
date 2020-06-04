@@ -63,6 +63,7 @@ class NEvents extends React.Component {
       let title = event.title;
       let categories = ""; //categories for the single event in the loop in string
       let current_cat = []; //categories for the single event in the loop
+      let current_date = []; //dates already recorded for this event;
 
       //CATEGORIES information for each child component
       for (let category of event.categories) {
@@ -120,28 +121,31 @@ class NEvents extends React.Component {
         let dateformat = new Date(geometry.date);
         if (dateformat >= from_date && dateformat <= to_date) {
           let tempdate = geometry.date.substring(0, 10);
-          for (let c of current_cat) {
-            if (!l_dateid.includes(tempdate, 0)) {
-              l_dateid.push(tempdate);
-              l_dateid.sort();
-            }
-            let flag = false;
-            for (let b of l_bubble) {
-              if (
-                b.x == l_dateid.indexOf(tempdate) &&
-                b.y == l_catid.indexOf(c)
-              ) {
-                b.r += 2;
-                flag = true;
+          if (!current_date.includes(tempdate, 0)) {
+            for (let c of current_cat) {
+              if (!l_dateid.includes(tempdate, 0)) {
+                l_dateid.push(tempdate);
+                l_dateid.sort();
+              }
+              let flag = false;
+              for (let b of l_bubble) {
+                if (
+                  b.x == l_dateid.indexOf(tempdate) &&
+                  b.y == l_catid.indexOf(c)
+                ) {
+                  b.r += 2;
+                  flag = true;
+                }
+              }
+              if (!flag) {
+                l_bubble.push({
+                  x: l_dateid.indexOf(tempdate),
+                  y: l_catid.indexOf(c),
+                  r: 5,
+                });
               }
             }
-            if (!flag) {
-              l_bubble.push({
-                x: l_dateid.indexOf(tempdate),
-                y: l_catid.indexOf(c),
-                r: 5,
-              });
-            }
+            current_date.push(tempdate);
           }
         }
       }
