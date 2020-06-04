@@ -5,7 +5,7 @@ class Landing extends React.Component {
     super();
     this.state = {
       imgtags: [],
-      imagedate:"",
+      imagedate: "",
     };
   }
 
@@ -16,18 +16,22 @@ class Landing extends React.Component {
     function pad(s) {
       return s < 10 ? "0" + s : s;
     }
-    const latest_string = [
+    let latest_string = [
       latest.getFullYear(),
       pad(latest.getMonth() + 1),
       pad(latest.getDate()),
     ].join("-");
 
-    const image_dates = [
+    latest_string = "2020-06-02";
+
+    let image_dates = [
       latest.getFullYear(),
       pad(latest.getMonth() + 1),
       pad(latest.getDate()),
     ].join("/");
-    console.log(image_dates[0])
+
+    image_dates = "2020/06/02";
+
     let images = [];
     fetch(
       `https://api.nasa.gov/EPIC/api/natural/date/${encodeURIComponent(
@@ -50,7 +54,7 @@ class Landing extends React.Component {
             i +
             ".png"
         );
-        
+
         return l_imgtags;
       })
       .then((l_imgtags) => {

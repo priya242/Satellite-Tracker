@@ -15,6 +15,8 @@ class NEvents extends React.Component {
       worlddata: [],
       area_data_mag: [],
       bubble: [],
+      catid: [],
+      dateid: [],
     };
     this.fetchData = this.fetchData.bind(this);
     this.daysChange = this.daysChange.bind(this);
@@ -125,19 +127,19 @@ class NEvents extends React.Component {
             let flag = false;
             for (let b of l_bubble) {
               if (
-                b[0] == l_dateid.indexOf(tempdate) &&
-                b[1] == l_catid.indexOf(c)
+                b.x == l_dateid.indexOf(tempdate) &&
+                b.y == l_catid.indexOf(c)
               ) {
-                b[2] += 2;
+                b.r += 2;
                 flag = true;
               }
             }
             if (!flag) {
-              l_bubble.push([
-                l_dateid.indexOf(tempdate),
-                l_catid.indexOf(c),
-                5,
-              ]);
+              l_bubble.push({
+                x: l_dateid.indexOf(tempdate),
+                y: l_catid.indexOf(c),
+                r: 5,
+              });
             }
           }
         }
@@ -160,6 +162,9 @@ class NEvents extends React.Component {
       count: l_count,
       worlddata: l_worlddata,
       area_data_mag: l_date_mag,
+      bubble: l_bubble,
+      catid: l_catid,
+      dateid: l_dateid,
     });
   };
 
@@ -197,7 +202,11 @@ class NEvents extends React.Component {
           </div>
           <NEworldmap worlddata={this.state.worlddata} />
           <NEeach area_data_mag={this.state.area_data_mag} />
-          <NEbubble />
+          <NEbubble
+            bubble={this.state.bubble}
+            dateid={this.state.dateid}
+            catid={this.state.catid}
+          />
         </div>
       </div>
     );
