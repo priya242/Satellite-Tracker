@@ -2,7 +2,7 @@ import React from "react";
 import NEworldmap from "./nevents/NEworldmap";
 import NEtop from "./nevents/NEtop";
 import NEeach from "./nevents/NEeach";
-import NEheatmap from "./nevents/NEheatmap";
+import NEbubble from "./nevents/NEheatmap";
 
 class NEvents extends React.Component {
   // const NASA_API_KEY = encodeURIComponent(process.env.REACT_APP_NE_API_KEY);
@@ -52,6 +52,9 @@ class NEvents extends React.Component {
     let l_catid = []; //BUBBLE : category with id as index
     let l_dateid = []; //BUBBLE : date with id as index
     let l_bubble = [];
+    let to_date = new Date();
+    let from_date = new Date();
+    from_date.setDate(from_date.getDate() - days);
 
     for (let event of data) {
       l_count++; //total number of events
@@ -111,21 +114,31 @@ class NEvents extends React.Component {
           }
         }
 
-        //heatmap
-        let tempdate = geometry.date.substring(0, 9);
-        for (let c of current_cat) {
-          if (!l_dateid.includes(tempdate, 0)) {
-            l_dateid.push(tempdate);
-          }
-          let flag = false;
-          for (let b of l_bubble) {
-            if (b[0] == tempdate && b[1] == c) {
-              b[3] += 1;
-              flag = true;
+        //BUBBLE
+        let dateformat = new Date(geometry.date);
+        if (dateformat >= from_date && dateformat <= to_date) {
+          let tempdate = geometry.date.substring(0, 10);
+          for (let c of current_cat) {
+            if (!l_dateid.includes(tempdate, 0)) {
+              l_dateid.push(tempdate);
             }
-          }
-          if (!flag) {
-            l_bubble.push([l_dateid.indexOf(tempdate), l_catid.indexOf(c), 1]);
+            let flag = false;
+            for (let b of l_bubble) {
+              if (
+                b[0] == l_dateid.indexOf(tempdate) &&
+                b[1] == l_catid.indexOf(c)
+              ) {
+                b[2] += 2;
+                flag = true;
+              }
+            }
+            if (!flag) {
+              l_bubble.push([
+                l_dateid.indexOf(tempdate),
+                l_catid.indexOf(c),
+                5,
+              ]);
+            }
           }
         }
       }
@@ -184,7 +197,7 @@ class NEvents extends React.Component {
           </div>
           <NEworldmap worlddata={this.state.worlddata} />
           <NEeach area_data_mag={this.state.area_data_mag} />
-          <NEheatmap />
+          <NEbubble />
         </div>
       </div>
     );
