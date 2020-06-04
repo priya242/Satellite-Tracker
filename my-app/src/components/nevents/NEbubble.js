@@ -8,7 +8,6 @@ class NEbubble extends React.Component {
     let bubble = this.props.bubble;
     let dateid = this.props.dateid;
     let catid = this.props.catid;
-    let megadata = {};
 
     const data = {
       datasets: [
@@ -24,16 +23,18 @@ class NEbubble extends React.Component {
         yAxes: [
           {
             ticks: {
-              min: -1,
-              max: 4,
+              callback: function (value, index, values) {
+                return catid[value];
+              },
             },
           },
         ],
         xAxes: [
           {
             ticks: {
-              min: -1,
-              max: 20,
+              callback: function (value, index, values) {
+                return dateid[value];
+              },
             },
           },
         ],

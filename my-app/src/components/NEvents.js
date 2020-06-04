@@ -2,7 +2,7 @@ import React from "react";
 import NEworldmap from "./nevents/NEworldmap";
 import NEtop from "./nevents/NEtop";
 import NEeach from "./nevents/NEeach";
-import NEbubble from "./nevents/NEheatmap";
+import NEbubble from "./nevents/NEbubble";
 
 class NEvents extends React.Component {
   // const NASA_API_KEY = encodeURIComponent(process.env.REACT_APP_NE_API_KEY);
@@ -145,12 +145,6 @@ class NEvents extends React.Component {
         }
       }
     }
-
-    console.log("BUBBLE-----------");
-    console.log(l_bubble);
-    console.log(l_catid);
-    console.log(l_dateid);
-    console.log("----------BUBBLE");
 
     l_bar = Object.keys(l_bar)
       .map((key) => [key, l_bar[key]])
