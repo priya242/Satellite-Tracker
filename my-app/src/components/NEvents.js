@@ -49,13 +49,14 @@ class NEvents extends React.Component {
     let l_bar = {};
     let l_worlddata = [];
     let l_date_mag = [];
-    // let l_catid = []; //category with numeric catid
-    let l_dateid = [];
+    let l_catid = []; //BUBBLE : category with id as index
+    let l_dateid = []; //BUBBLE : date with id as index
+    let l_bubble = [];
 
     for (let event of data) {
       l_count++; //total number of events
       let title = event.title;
-      let categories = "";
+      let categories = ""; //categories for the single event in the loop in string
       let current_cat = []; //categories for the single event in the loop
 
       //CATEGORIES information for each child component
@@ -68,12 +69,11 @@ class NEvents extends React.Component {
         } else {
           l_bar[category.id] = 1;
         }
-        //HEATMAP
-        // if (!(category.id in l_catid)) {
-        //   l_catid_count += 1;
-        //   l_catid[category.id] = l_count; // {category1: 1, category2: 2, category3: 3 ... }
-        // }
-        // current_cat.push(category.id);
+        //BUBBLE
+        if (!l_catid.includes(category.id, 0)) {
+          l_catid.push(category.id);
+        }
+        current_cat.push(category.id);
       }
 
       //AREA Map For DATE and MAGNITUDE
@@ -86,7 +86,7 @@ class NEvents extends React.Component {
       l_date_mag.push(date_mag);
 
       //WORLD MAP DATA per lat,long
-      //HEATMAP
+      //BUBBLE
       for (let geometry of event.geometry) {
         //world
         //one event one location
@@ -112,17 +112,30 @@ class NEvents extends React.Component {
         }
 
         //heatmap
-        // for (let c of current_cat) {
-        //   if (geometry.date in l_catdate) {
-        //     if (c == Object.keys(l_catdate[geometry.date])[0]) {
-        //       l_catdate[geometry.date].category += 1;
-        //     } else {
-        //       l_catdate[geometry.date] =
-        //     }
-        //   }
-        // }
+        let tempdate = geometry.date.substring(0, 9);
+        for (let c of current_cat) {
+          if (!l_dateid.includes(tempdate, 0)) {
+            l_dateid.push(tempdate);
+          }
+          let flag = false;
+          for (let b of l_bubble) {
+            if (b[0] == tempdate && b[1] == c) {
+              b[3] += 1;
+              flag = true;
+            }
+          }
+          if (!flag) {
+            l_bubble.push([l_dateid.indexOf(tempdate), l_catid.indexOf(c), 1]);
+          }
+        }
       }
     }
+
+    console.log("BUBBLE-----------");
+    console.log(l_bubble);
+    console.log(l_catid);
+    console.log(l_dateid);
+    console.log("----------BUBBLE");
 
     l_bar = Object.keys(l_bar)
       .map((key) => [key, l_bar[key]])
