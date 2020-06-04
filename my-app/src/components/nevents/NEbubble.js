@@ -19,10 +19,27 @@ class NEbubble extends React.Component {
     };
 
     const options = {
+      // tooltips: {
+      //   custom:
+      // }
+      title: {
+        display: true,
+        text: "Events per days",
+      },
+      legend: {
+        display: false,
+      },
+      maintainAspectRatio: false,
       scales: {
         yAxes: [
           {
+            gridLines: {
+              display: false,
+            },
             ticks: {
+              fontColor: "#FCFCFC",
+              fontSize: 16,
+              beginAtZero: true,
               callback: function (value, index, values) {
                 return catid[value];
               },
@@ -31,7 +48,13 @@ class NEbubble extends React.Component {
         ],
         xAxes: [
           {
+            gridLines: {
+              display: false,
+            },
             ticks: {
+              fontColor: "#FCFCFC",
+              fontSize: 16,
+              beginAtZero: true,
               callback: function (value, index, values) {
                 return dateid[value];
               },

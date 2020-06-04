@@ -51,8 +51,8 @@ class NEvents extends React.Component {
     let l_bar = {};
     let l_worlddata = [];
     let l_date_mag = [];
-    let l_catid = []; //BUBBLE : category with id as index
-    let l_dateid = []; //BUBBLE : date with id as index
+    let l_catid = [0]; //BUBBLE : category with id as index
+    let l_dateid = [0]; //BUBBLE : date with id as index
     let l_bubble = [];
     let to_date = new Date();
     let from_date = new Date();
@@ -123,6 +123,7 @@ class NEvents extends React.Component {
           for (let c of current_cat) {
             if (!l_dateid.includes(tempdate, 0)) {
               l_dateid.push(tempdate);
+              l_dateid.sort();
             }
             let flag = false;
             for (let b of l_bubble) {
