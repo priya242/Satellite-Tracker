@@ -8,17 +8,6 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="navbar">
-          <span>
-            <b>Sattelite Tracker</b>
-          </span>
-          <div className="nav-controls">
-            <div>Satellite Info</div>
-            <a href="/">
-              <div>Natural Events</div>
-            </a>
-          </div>
-        </div>
         <Landing />
         <SatInfo />
         <NEvents />
