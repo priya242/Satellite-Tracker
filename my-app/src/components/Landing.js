@@ -1,7 +1,14 @@
 import React from "react";
 
 class Landing extends React.Component {
-  render() {
+  constructor() {
+    super();
+    this.state = {
+      imgtags: [],
+    };
+  }
+
+  componentDidMount() {
     const NASA_API_KEY = encodeURIComponent(process.env.REACT_APP_NE_API_KEY);
     const latest = new Date();
     latest.setDate(latest.getDate() - 1);
@@ -16,8 +23,21 @@ class Landing extends React.Component {
       pad(latest.getDate()),
     ].join("-");
 
+<<<<<<< HEAD
    // console.log("Landing");
     const images = [];
+=======
+    const image_dates = [
+      latest.getFullYear(),
+      pad(latest.getMonth() + 1),
+      pad(latest.getDate()),
+    ].join("/");
+
+    let images = [];
+    // let l_imgtags = [];
+
+    console.log("Landing");
+>>>>>>> 4b4a8cfe134798aa3654197983e842c70f5252dd
     fetch(
       `https://api.nasa.gov/EPIC/api/natural/date/${encodeURIComponent(
         latest_string
@@ -25,6 +45,7 @@ class Landing extends React.Component {
     )
       .then((response) => response.json())
       .then((data) => {
+<<<<<<< HEAD
         return data;
       })
       .then((data) => {
@@ -36,6 +57,45 @@ class Landing extends React.Component {
     return (
        <Landing />
       )
+=======
+        for (let d of data) {
+          images.push(d.image);
+        }
+      })
+      .then(() => {
+        let l_imgtags = images.map((i) => (
+          <img
+            src={
+              "https://epic.gsfc.nasa.gov/archive/natural/" +
+              image_dates +
+              "/png/" +
+              i +
+              ".png"
+            }
+            alt=""
+          />
+        ));
+        return l_imgtags;
+      })
+      .then((l_imgtags) => {
+        console.log("inside fetch chain");
+        this.setState({ imgtags: l_imgtags });
+        console.log(this.state.imgtags);
+      })
+      .catch((error) => {
+        console.log("Request failed: ", error);
+      });
+  }
+
+  render() {
+    return (
+      <div>
+        LANDING:
+        <br />
+        {this.state.imgtags}
+      </div>
+    );
+>>>>>>> 4b4a8cfe134798aa3654197983e842c70f5252dd
   }
 }
 
