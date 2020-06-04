@@ -23,6 +23,10 @@ class Landing extends React.Component {
       pad(latest.getDate()),
     ].join("-");
 
+<<<<<<< HEAD
+   // console.log("Landing");
+    const images = [];
+=======
     const image_dates = [
       latest.getFullYear(),
       pad(latest.getMonth() + 1),
@@ -33,6 +37,7 @@ class Landing extends React.Component {
     // let l_imgtags = [];
 
     console.log("Landing");
+>>>>>>> 4b4a8cfe134798aa3654197983e842c70f5252dd
     fetch(
       `https://api.nasa.gov/EPIC/api/natural/date/${encodeURIComponent(
         latest_string
@@ -40,6 +45,19 @@ class Landing extends React.Component {
     )
       .then((response) => response.json())
       .then((data) => {
+<<<<<<< HEAD
+        return data;
+      })
+      .then((data) => {
+        for (let d of data) {
+          images.push(d.image);
+        }
+      });
+
+    return (
+       <Landing />
+      )
+=======
         for (let d of data) {
           images.push(d.image);
         }
@@ -77,6 +95,7 @@ class Landing extends React.Component {
         {this.state.imgtags}
       </div>
     );
+>>>>>>> 4b4a8cfe134798aa3654197983e842c70f5252dd
   }
 }
 
