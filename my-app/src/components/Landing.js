@@ -16,18 +16,26 @@ class Landing extends React.Component {
       pad(latest.getDate()),
     ].join("-");
 
-    console.log("Landing");
+   // console.log("Landing");
+    const images = [];
     fetch(
       `https://api.nasa.gov/EPIC/api/natural/date/${encodeURIComponent(
         latest_string
       )}?api_key=${encodeURIComponent(NASA_API_KEY)}`
     )
       .then((response) => response.json())
-      .then((data) => {})
-      .catch((error) => {
-        console.log("Request failed: ", error);
+      .then((data) => {
+        return data;
+      })
+      .then((data) => {
+        for (let d of data) {
+          images.push(d.image);
+        }
       });
-    return <div>Landing</div>;
+
+    return (
+       <Landing />
+      )
   }
 }
 
