@@ -42,6 +42,7 @@ class NEeach extends React.Component {
           </select>
         </div>
         <NEarea event={this.state.event} />
+        <div></div>
       </div>
     );
   }

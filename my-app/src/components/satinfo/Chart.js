@@ -52,10 +52,12 @@ export default function Chart(props) {
         </div>
       )}
       <HorizontalBar
-        height={120}
+        height={140}
         data={data}
         options={{
           legend: {
+            display:true,
+            position:"bottom",
             labels: {
               fontColor: "#fff",
             },
