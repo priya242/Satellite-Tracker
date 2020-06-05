@@ -170,7 +170,10 @@ class NEvents extends React.Component {
       <div className="nevents">
         <div className="navbar">
           <div className="number">
-            # Events: <span>{this.state.count}</span>
+            # Events:{" "}
+            <span>
+              <b>{this.state.count}</b>
+            </span>
           </div>
           <div className="nav-controls">
             Info for last{" "}
@@ -183,16 +186,16 @@ class NEvents extends React.Component {
           </div>
         </div>
         <div className="nevents_container">
-          <div className="nevent-item">
+          <div className="nevent-item nevents_top">
             <NEtop events={this.state.bar} total={this.state.count} />
           </div>
-          <div className="nevent-item">
+          <div className="nevent-item nevents_map">
             <NEworldmap worlddata={this.state.worlddata} />
           </div>
-          <div className="nevent-item">
+          <div className="nevent-item nevents_area">
             <NEeach area_data_mag={this.state.area_data_mag} />
           </div>
-          <div className="nevent-item">
+          <div className="nevent-item nevents_bubble">
             <NEbubble
               bubble={this.state.bubble}
               dateid={this.state.dateid}

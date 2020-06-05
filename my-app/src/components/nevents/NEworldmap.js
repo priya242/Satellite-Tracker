@@ -25,7 +25,7 @@ class NEworldmap extends React.Component {
         text: "Location of each event",
         style: {
           color: "#FCFCFC",
-          fontSize: "20px",
+          // fontSize: "",
         },
       },
       subtitle: {

@@ -25,6 +25,7 @@ class NEtop extends React.Component {
     };
 
     const options = {
+      showAllTooltips: true,
       maintainAspectRatio: true,
       title: {
         display: true,
@@ -45,11 +46,10 @@ class NEtop extends React.Component {
             gridLines: {
               display: true,
               color: "rgba(0,0,0,0)",
-              zeroLineColor: "#FCFCFC",
             },
             ticks: {
-              fontColor: "#FF9C00",
-              fontSize: 20,
+              fontColor: "#FCFCFC",
+              // fontSize: 16,
             },
           },
         ],
@@ -57,56 +57,13 @@ class NEtop extends React.Component {
           {
             ticks: {
               fontColor: "#FCFCFC",
-              fontSize: 16,
+              // fontSize: 16,
               beginAtZero: true,
             },
           },
         ],
       },
     };
-
-    // Plugin for text in the middle : https://jsfiddle.net/cmyker/ooxdL2vj/
-    // https://www.chartjs.org/docs/latest/developers/plugins.html
-    // const plugin = [
-    //   {
-    // beforeDraw: function (chart) {
-    //   // var width = chart.chart.width,
-    //   //   height = chart.chart.height,
-    //     ctx = chart.chart.ctx;
-
-    //   ctx.restore();
-    //   var fontSize = (height / 50).toFixed(2);
-    //   ctx.font = fontSize + "em sans-serif";
-    //   ctx.textBaseline = "middle";
-    //   ctx.fillStyle = "#FF9C00";
-
-    //   var text = event[1].toString(),
-    //     textX = Math.round((width - ctx.measureText(text).width) / 2),
-    //     textY = height / 2;
-
-    //   ctx.fillText(text, textX, textY);
-    //   ctx.save();
-    // },
-
-    //     beforeDraw: function (chart) {
-    //       var ctx = chart.chart.ctx;
-    //       ctx.restore();
-    //       ctx.font = chart.scale.font;
-    //       alert(ctx.font);
-    //       ctx.fillStyle = chart.scale.textColor;
-    //       alert(ctx.fillStyle);
-    //       ctx.textAlign = "center";
-    //       ctx.textBaseline = "bottom";
-
-    //       chart.datasets.forEach(function (dataset) {
-    //         dataset.bars.forEach(function (bar) {
-    //           ctx.fillText(bar.value, bar.x, bar.y - 5);
-    //         });
-    //       });
-    //       ctx.save();
-    //     },
-    //   },
-    // ];
 
     return <HorizontalBar data={state} options={options} />; // plugins={plugin} />;
   }

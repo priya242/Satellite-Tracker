@@ -25,9 +25,9 @@ class NEarea extends React.Component {
         datasets: [
           {
             label: l_label,
-            fill: false,
+            fill: "origin",
             lineTension: 0.5,
-            backgroundColor: "#01D4B4",
+            backgroundColor: "rgba(1,212,180,0.5)",
             borderColor: "#01D4B4",
             borderWidth: 2,
             data: l_data,
@@ -39,14 +39,14 @@ class NEarea extends React.Component {
           display: true,
           text: "Magnitude per day",
           fontColor: "#FCFCFC",
-          fontSize: 16,
+          //   fontSize: 16,
         },
         legend: {
           display: true,
           position: "bottom",
           labels: {
             fontColor: "#FCFCFC",
-            fontSize: 16,
+            // fontSize: 16,
             padding: 16,
           },
         },
@@ -55,12 +55,12 @@ class NEarea extends React.Component {
             {
               gridLines: {
                 display: true,
-                color: "#FCFCFC",
-                zeroLineColor: "#FCFCFC",
+                color: "#1b3b69",
+                zeroLineColor: "#041021", //"RGBA(4, 16, 33, 0.5)",
               },
               ticks: {
                 fontColor: "#FCFCFC",
-                fontSize: 20,
+                // fontSize: 20,
               },
             },
           ],
@@ -68,7 +68,7 @@ class NEarea extends React.Component {
             {
               ticks: {
                 fontColor: "#FCFCFC",
-                fontSize: 16,
+                // fontSize: 16,
                 beginAtZero: true,
               },
             },
