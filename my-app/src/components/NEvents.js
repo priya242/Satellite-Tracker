@@ -2,7 +2,7 @@ import React from "react";
 import NEworldmap from "./nevents/NEworldmap";
 import NEtop from "./nevents/NEtop";
 import NEeach from "./nevents/NEeach";
-import NEheatmap from "./nevents/NEheatmap";
+import NEbubble from "./nevents/NEbubble";
 
 class NEvents extends React.Component {
   // const NASA_API_KEY = encodeURIComponent(process.env.REACT_APP_NE_API_KEY);
@@ -15,6 +15,8 @@ class NEvents extends React.Component {
       worlddata: [],
       area_data_mag: [],
       bubble: [],
+      catid: [],
+      dateid: [],
     };
     this.fetchData = this.fetchData.bind(this);
     this.daysChange = this.daysChange.bind(this);
@@ -49,15 +51,19 @@ class NEvents extends React.Component {
     let l_bar = {};
     let l_worlddata = [];
     let l_date_mag = [];
-    let l_catid = []; //BUBBLE : category with id as index
-    let l_dateid = []; //BUBBLE : date with id as index
+    let l_catid = [0]; //BUBBLE : category with id as index
+    let l_dateid = [0]; //BUBBLE : date with id as index
     let l_bubble = [];
+    let to_date = new Date();
+    let from_date = new Date();
+    from_date.setDate(from_date.getDate() - days);
 
     for (let event of data) {
       l_count++; //total number of events
       let title = event.title;
       let categories = ""; //categories for the single event in the loop in string
       let current_cat = []; //categories for the single event in the loop
+      let current_date = []; //dates already recorded for this event;
 
       //CATEGORIES information for each child component
       for (let category of event.categories) {
@@ -111,31 +117,39 @@ class NEvents extends React.Component {
           }
         }
 
-        //heatmap
-        let tempdate = geometry.date.substring(0, 9);
-        for (let c of current_cat) {
-          if (!l_dateid.includes(tempdate, 0)) {
-            l_dateid.push(tempdate);
-          }
-          let flag = false;
-          for (let b of l_bubble) {
-            if (b[0] == tempdate && b[1] == c) {
-              b[3] += 1;
-              flag = true;
+        //BUBBLE
+        let dateformat = new Date(geometry.date);
+        if (dateformat >= from_date && dateformat <= to_date) {
+          let tempdate = geometry.date.substring(0, 10);
+          if (!current_date.includes(tempdate, 0)) {
+            for (let c of current_cat) {
+              if (!l_dateid.includes(tempdate, 0)) {
+                l_dateid.push(tempdate);
+                l_dateid.sort();
+              }
+              let flag = false;
+              for (let b of l_bubble) {
+                if (
+                  b.x == l_dateid.indexOf(tempdate) &&
+                  b.y == l_catid.indexOf(c)
+                ) {
+                  b.r += 2;
+                  flag = true;
+                }
+              }
+              if (!flag) {
+                l_bubble.push({
+                  x: l_dateid.indexOf(tempdate),
+                  y: l_catid.indexOf(c),
+                  r: 5,
+                });
+              }
             }
-          }
-          if (!flag) {
-            l_bubble.push([l_dateid.indexOf(tempdate), l_catid.indexOf(c), 1]);
+            current_date.push(tempdate);
           }
         }
       }
     }
-
-    console.log("BUBBLE-----------");
-    console.log(l_bubble);
-    console.log(l_catid);
-    console.log(l_dateid);
-    console.log("----------BUBBLE");
 
     l_bar = Object.keys(l_bar)
       .map((key) => [key, l_bar[key]])
@@ -147,6 +161,9 @@ class NEvents extends React.Component {
       count: l_count,
       worlddata: l_worlddata,
       area_data_mag: l_date_mag,
+      bubble: l_bubble,
+      catid: l_catid,
+      dateid: l_dateid,
     });
   };
 
@@ -184,7 +201,11 @@ class NEvents extends React.Component {
           </div>
           <NEworldmap worlddata={this.state.worlddata} />
           <NEeach area_data_mag={this.state.area_data_mag} />
-          <NEheatmap />
+          <NEbubble
+            bubble={this.state.bubble}
+            dateid={this.state.dateid}
+            catid={this.state.catid}
+          />
         </div>
       </div>
     );

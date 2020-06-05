@@ -166,11 +166,15 @@ h1 {
 .nevents_world {
   height: 100%;
   width: 100%;
-  grid-column: 1 / span 4;
-}
-
-.nevents_heatmap {
   grid-column: 2 / span 3;
 }
+
+.nevents_bubble {
+  grid-column: 2 / span 2;
+}
+
+/* .nevents_heatmap {
+  grid-column: 2 / span 3;
+} */
 
 /* -----------------------------------------END----------------------------------*/
