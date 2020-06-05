@@ -2,6 +2,7 @@ import React from "react";
 import Chart from "./satinfo/Chart";
 import BarData from "./satinfo/BarData";
 import WorldMap from "./satinfo/WorldMap";
+import Apod from  "./satinfo/Apod";
 class SatInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -10,6 +11,7 @@ class SatInfo extends React.Component {
       Data: [],
       SatCat: [],
       launchDate: [],
+      apodData:[],
       isLoaded: false,
     };
   }
@@ -20,6 +22,8 @@ class SatInfo extends React.Component {
 
     const url1 =
       "https://www.n2yo.com/rest/v1/satellite/above/41.702/-76.014/0/90/0/&apiKey=TY7W6H-2YWZWQ-9W9WEL-4FIH";
+    const url2 =
+      "https://api.nasa.gov/planetary/apod?api_key=TY7W6H-2YWZWQ-9W9WEL-4FIH";
     //--------------------------------------fetching url-------------------------------------------------
     fetch(url)
       .then((response) => response.json())
@@ -56,6 +60,18 @@ class SatInfo extends React.Component {
           Data: data,
         });
       });
+
+    //--------------------------------------fetching url2------------------------------
+    fetch(url2)
+      .then((response) => response.json())
+      .then((data) => {
+        return data;
+      })
+      .then((data) => {
+        this.setState({
+          apodData:data
+        });
+      });
   }
   componentDidMount() {
     this.fetchData();
@@ -75,7 +91,7 @@ class SatInfo extends React.Component {
 
   //--------------------------------------render and return--------------------------------
   render() {
-    const { nasa, Data, launchDate } = this.state;
+    const { nasa, Data, launchDate,apodData } = this.state;
     //console.log(launchDate)
     return (
       <div className="satinfo">
@@ -84,11 +100,11 @@ class SatInfo extends React.Component {
           <div className="item1">
             <video autoPlay controls muted loop src={nasa} type="video/mp4" />
           </div>
-         
+
           <Chart DataSet={Data} />
-          
           <BarData DataSets={launchDate} />
           <WorldMap WorldDataSet={launchDate} />
+        
         </div>
       </div>
     );
