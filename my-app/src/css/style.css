@@ -7,7 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
   /*background-image: radial-gradient(#855988, #141852);*/
-  background-image: url("./universe-dark.jpg");
+  /*background-image: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);*/
+  background-image: url("./satellite_tracker.jpg");
+  /*background-image: url("./universe-dark.jpg"); */
   background-size: 100% 100%;
   background-repeat: repeat-y;
   color: #ffffff;
@@ -27,40 +29,79 @@ img {
   height: 100vh;
   margin: 0 auto;
   padding: 1em;
+  background-image: url("./satellite_tracker.jpg");
 }
 
 .landing-container {
   display: grid;
-  grid-template-rows: 22vh 22vh 22vh 22vh;
+  grid-template-rows: 2vh 20vh 20vh 20vh 20vh;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 20px;
+  
 }
 
 .lgrid-item1 {
-  grid-area: 1/3/5/5;
+  grid-area:  2/3/6/5;
   width: 100%;
-  border: 3px solid lightgray;
+  height:100%;
+  border: 2px solid rgb(47, 46, 46);
   text-align: center;
   font-style: italic;
 }
 .lgrid-item2 {
-  grid-area: 2/1/4/3;
+  grid-area: 3/1/5/3;
   width: 100%;
-  font-weight: bolder;
+  font-family: 'lato',sans-serif;
+}
+.lgrid-item3 {
+  grid-area: 1/1/2/5;
+  width: 100%;
+  font-family: 'lato',sans-serif;
+}
+h1 {
   font-size: 150px;
+  margin-top: 0%;
+  font-weight: bolder;
+  text-align:center;
+  background: -webkit-linear-gradient(#ffffff,#38495a);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  font-size: larger;
   text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #38495a;
 }
 /*---------------------------------------- Satellite Info -------------------------------*/
 .satinfo_container {
   display: grid;
   grid-template-rows: 45vh 45vh;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 10px;
-  row-gap: 5px;
+  column-gap: 20px;
+  row-gap: 15px;
+  background-image: url("./satellite_tracker.jpg");
 }
 
 video {
-  width: 98%;
+  width: 100%;
 }
 .grid-item-video {
   grid-area: 1/3/2/5;
@@ -90,9 +131,12 @@ h1 {
 .dropdown {
   font-family: Arial;
   background-color: whitesmoke;
-  width: 200px;
+  width: 100%;
   height: 30px;
   font-size: medium;
+  color : white;
+  background-image: radial-gradient(rgb(50, 62, 116), rgb(18, 6, 75));
+  border:1px solid white;
 }
 .satinfo {
   height: 100vh;
@@ -106,6 +150,7 @@ h1 {
   height: 100vh;
   margin: 0 auto;
   padding: 1em;
+  background-image: url("./satellite_tracker.jpg");
 }
 .navbar {
   background-color: #070b34;
