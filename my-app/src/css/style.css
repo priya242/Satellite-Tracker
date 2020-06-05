@@ -116,9 +116,13 @@ video {
   background-image: radial-gradient(rgb(50, 62, 116), rgb(18, 6, 75));
 }
 .grid-item4 {
-  width: 100%;
   grid-area: 2/2/3/5;
-  background-image: radial-gradient(rgb(50, 62, 116), rgb(18, 6, 75));
+  width:100%;
+  height:100%
+ 
+}
+.highcharts-background {
+  opacity : 0.9;
 }
 
 h1 {
