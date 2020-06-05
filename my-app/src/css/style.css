@@ -150,7 +150,7 @@ h1 {
 /* --------------------------------NE events page - 2 ----------------------------*/
 .nevents {
   /* background-image: linear-gradient(0deg, #141852, #855988); */
-  height: 100vh;
+  /* height: 100vh; */
   margin: 0 auto;
   padding: 1em;
   background-image: url("./satellite_tracker.jpg");
@@ -220,8 +220,7 @@ h1 {
 }
 
 .nevents_item {
-  background-color: rgb(10, 25, 47);
-  opacity: 0.8;
+  background-color: rgb(10, 25, 47, 0.8);
 }
 
 .nevents_world {
