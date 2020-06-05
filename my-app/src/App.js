@@ -33,11 +33,6 @@ class App extends React.Component {
           </Route>
         </Switch>
       </div>
-      // <React.Fragment>
-      //   <Landing />
-      //   <SatInfo />
-      //   <NEvents />
-      // </React.Fragment>
     );
   }
 }
