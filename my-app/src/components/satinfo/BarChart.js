@@ -6,6 +6,7 @@ class BarChart extends React.Component{
     //console.log(Datasets);
     let data = {};
     let options = {};
+    var isLoaded = true;
    data = {
       labels: Object.keys(Datasets),
       datasets: [
@@ -57,9 +58,10 @@ class BarChart extends React.Component{
         ],
       },
     };
-
+   
     return(
       <div className = "grid-item3">
+       
       <Bar data={data} height={100} width ={100} options={options} />
       </div>
     );      

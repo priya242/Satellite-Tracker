@@ -36,10 +36,11 @@ class BarData extends React.Component {
       }
       return object;
     }, {});
-
+    
     this.setState({
       yearlyData: tmpYearlyData,
       year: Object.keys(tmpYearlyData),
+      isLoaded: true,
     });
   }
 
@@ -59,21 +60,19 @@ class BarData extends React.Component {
     ];
     let selectops = data.map((tempData, i) => (
       <option key={tempData} value={tempData}>
-        {tempData}
+        {tempData} 
       </option>
     ));
 
     return (
       <div>
-        
           <select
             name="Select year"
             className="dropdown"
-            onChange={this.handleChange}
+            onChange={this.handleChange} id = "dd"
           >
             {selectops}
           </select>
-        
         <BarChart satdata={this.state.yearlyData} />
       </div>
     );
