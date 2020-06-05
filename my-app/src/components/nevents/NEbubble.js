@@ -19,9 +19,18 @@ class NEbubble extends React.Component {
     };
 
     const options = {
-      // tooltips: {
-      //   custom:
-      // }
+      tooltips: {
+        callbacks: {
+          label: function (tooltipItem, data) {
+            let rLabel =
+              data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index].r;
+            rLabel = (rLabel - 5) / 2 + 1;
+            let yLabel = catid[tooltipItem.yLabel];
+            let xLabel = dateid[tooltipItem.xLabel];
+            return rLabel + " " + yLabel + " recorded on " + xLabel;
+          },
+        },
+      },
       title: {
         display: true,
         text: "Events per days",
