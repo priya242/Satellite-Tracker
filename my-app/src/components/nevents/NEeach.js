@@ -55,7 +55,7 @@ class NEeach extends React.Component {
     }
 
     return (
-      <div>
+      <div className = "nevents_item3">
         <div className="nav-controls">
           <select
             name="Event"

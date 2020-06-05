@@ -38,7 +38,7 @@ class BarChart extends React.Component {
     };
     options = {
       responsive: true,
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
       legend: {
         display: true,
         labels: {
@@ -68,9 +68,9 @@ class BarChart extends React.Component {
     };
 
     return (
-      <div className="item3">
-        <h2>Satellites By LaunchYear</h2>
-        <Line data={data} height ={350} width = {100} options={options} />
+      <div >
+        
+        <Line data={data} options={options} />
       </div>
     );
   }

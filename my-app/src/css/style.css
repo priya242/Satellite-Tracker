@@ -88,13 +88,12 @@ li a:hover {
 .satinfo_container {
   display: flex;
  flex-direction: column;
-  column-gap: 20px;
-  row-gap: 15px;
-  background-image: url("./satellite_tracker.jpg");
+ background-image: url("./satellite_tracker.jpg");
 }
 
 h2{
-  margin-left: 45%;
+  margin: 0 auto;
+  padding: 5%;
 }
 
 video {
@@ -104,30 +103,28 @@ video {
   width: 60%;
   background-color: rgb(10, 25, 47);
   opacity : 0.8;
-  margin-left: 22%;
+  margin: 0 auto;
 }
 .item2 {
   width: 60%;
   background-color: rgb(10, 25, 47);
   opacity : 0.8;
-  margin-left: 22%;
-  margin-top: 5%;
-  margin-right: 10%;
+  margin: 5% auto;
+   
 }
 .item3 {
   width: 60%;
-  margin-left: 22%;
+  margin: 5% auto;
   /*background-image: radial-gradient(rgb(50, 62, 116), rgb(18, 6, 75));*/
   background-color: rgba(10, 25, 47,0.8);
   
 }
 .item4 {
-  grid-area: 2/2/3/5;
-  width:100%;
-  margin-top:5%;
-  
- 
+  width:60%;
+  margin: 5% auto;
+
 }
+
 .highcharts-background {
   background-color: rgb(10, 25, 47);
   opacity : 0.1;
@@ -141,9 +138,8 @@ h1 {
 .dropdown {
   font-family: Arial;
   background-color: whitesmoke;
-  margin-top: 5%;
-  margin-left: 22%;
-  width: 60%;
+  margin: 5% auto;
+  width: 100%;
   height: 30px;
   font-size: medium;
   color: white;
@@ -224,27 +220,27 @@ h1 {
 .nevents_container {
   display: flex;
   flex-direction: column;
-  /* grid-template-rows: 45vh 45vh;
-  grid-template-columns: repeat(4, 1fr); */
+ 
 }
 
-.nevents_item {
+.nevents_item1 {
   background-color: rgb(10, 25, 47);
-  opacity: 0.8;
+  margin:5% auto;
 }
 
-.nevents_world {
-  height: 100%;
-  width: 100%;
-  grid-column: 2 / span 3;
-}
+.nevents_item2 {
+  background-color: rgb(10, 25, 47);
+  margin:5% auto;
 
-.nevents_bubble {
-  grid-column: 2 / span 2;
 }
-
-/* .nevents_heatmap {
-  grid-column: 2 / span 3;
-} */
+.nevents_item3 {
+  background-color: rgb(10, 25, 47);
+  margin:5% auto;
+}
+.nevents_item4 {
+  background-color: rgb(10, 25, 47);
+ 
+  margin:5% auto;
+}
 
 /* -----------------------------------------END----------------------------------*/

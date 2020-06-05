@@ -183,7 +183,7 @@ class NEvents extends React.Component {
           </div>
         </div>
         <div className="nevents_container">
-          <div className="number_events nevents_item">
+          <div className="nevent-item1">
             {/* <div className="number">
               Number of events: <br />
               <span>{this.state.count}</span>
