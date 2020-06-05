@@ -16,6 +16,7 @@ class NEeach extends React.Component {
     let event = data.filter((d) => {
       return d.title == title;
     });
+    event = event[0];
     this.setState({
       event: event,
     });
@@ -23,11 +24,35 @@ class NEeach extends React.Component {
 
   render() {
     let data = this.props.area_data_mag;
-    let selectops = data.map((data, i) => (
-      <option key={data.title} value={data.title}>
-        {data.title}
-      </option>
-    ));
+
+    let selectops = data.map((event, index) => {
+      if (index == 0) {
+        return (
+          <option key={event.title} value={event.title} selected>
+            {event.title}
+          </option>
+        );
+      } else {
+        return (
+          <option key={event.title} value={event.title}>
+            {event.title}
+          </option>
+        );
+      }
+    });
+
+    let defaultOption = {};
+
+    if (
+      Object.keys(this.state.event).length === 0 &&
+      this.state.event.constructor === Object
+    ) {
+      if (data.length != 0) {
+        defaultOption = data[0];
+      }
+    } else {
+      defaultOption = this.state.event;
+    }
 
     return (
       <div>
@@ -37,12 +62,10 @@ class NEeach extends React.Component {
             className="area_select"
             onChange={this.handleChange}
           >
-            <option>Select Event</option>
             {selectops}
           </select>
         </div>
-        <NEarea event={this.state.event} />
-        <div></div>
+        <NEarea event={defaultOption} />
       </div>
     );
   }
