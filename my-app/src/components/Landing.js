@@ -31,6 +31,8 @@ class Landing extends React.Component {
       pad(latest.getMonth() + 1),
       pad(latest.getDate()),
     ].join("/");
+
+    image_dates = "2020/06/02";
     // console.log(image_dates[0]);
     let images = [];
     fetch(
