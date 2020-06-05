@@ -1,7 +1,6 @@
 import React from "react";
 import Slider from "./SliderImage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import NEvents from "./NEvents";
 
 class Landing extends React.Component {
   constructor() {
@@ -13,7 +12,7 @@ class Landing extends React.Component {
   }
 
   componentDidMount() {
-    //const NASA_API_KEY = process.env.REACT_APP_NASA_API_KEY;
+    const NASA_API_KEY = process.env.REACT_APP_NASA_API_KEY;
     const latest = new Date();
     latest.setDate(latest.getDate() - 2);
     function pad(s) {
@@ -32,12 +31,12 @@ class Landing extends React.Component {
       pad(latest.getMonth() + 1),
       pad(latest.getDate()),
     ].join("/");
-    console.log(image_dates[0]);
+    // console.log(image_dates[0]);
     let images = [];
     fetch(
       `https://api.nasa.gov/EPIC/api/natural/date/${encodeURIComponent(
         latest_string
-      )}?api_key=twk4KeZwwqGPWJFY9ksFShKEyoDGimDlJAjwDH0z`
+      )}?api_key=${encodeURIComponent(NASA_API_KEY)}`
     )
       .then((response) => response.json())
       .then((data) => {
