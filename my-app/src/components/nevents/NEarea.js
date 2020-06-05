@@ -7,16 +7,17 @@ class NEarea extends React.Component {
     let data = {};
     let options = {};
 
-    if (Object.keys(event).length !== 0 && event.constructor !== Object) {
-      let l_labels = event[0].geometry.map((g) => g.date);
-      let l_data = event[0].geometry.map((g) => g.magnitudeValue);
-      let flag = false;
+    if (Object.keys(event).length !== 0 && event.constructor === Object) {
+      let l_labels = event.geometry.map((g) => g.date);
+      let l_data = event.geometry.map((g) => g.magnitudeValue);
+
       let l_label = "Magnitude not recorded";
-      for (let g of event[0].geometry) {
+      for (let g of event.geometry) {
         if (g.magnitudeUnit != null) {
           l_label = g.magnitudeUnit;
         }
       }
+
       data = {
         labels: l_labels,
         datasets: [
