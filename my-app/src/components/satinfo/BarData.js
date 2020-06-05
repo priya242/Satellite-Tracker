@@ -1,6 +1,5 @@
 import React from "react";
 import BarChart from "./BarChart";
-
 class BarData extends React.Component {
   constructor() {
     super();
