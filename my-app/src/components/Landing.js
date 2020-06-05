@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "./SliderImage";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class Landing extends React.Component {
   constructor() {
@@ -69,36 +69,20 @@ class Landing extends React.Component {
   }
   render() {
     return (
-      <Router>
-        <div className="landing">
-          <div className="landing-container">
-            <div className="lgrid-item3">
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  {" "}
-                  <Link to="/SatInfo">Satellite Information</Link>
-                </li>
-                <li>
-                  <Link to="/NEvents">Natural Events</Link>
-                </li>
-              </ul>
-            </div>
-            <div className="lgrid-item1">
-              <Slider images={this.state.imgtags} />
-              <p>
-                [This image was taken by NASA's EPIC camera onboard the NOAA
-                DSCOVR on {this.state.imagedate}]
-              </p>
-            </div>
-            <div className="lgrid-item2">
-              <h1>Satellite Tracker</h1>
-            </div>
+      <div className="landing">
+        <div className="landing-container">
+          <div className="lgrid-item1">
+            <Slider images={this.state.imgtags} />
+            <p>
+              [This image was taken by NASA's EPIC camera onboard the NOAA
+              DSCOVR on {this.state.imagedate}]
+            </p>
+          </div>
+          <div className="lgrid-item2">
+            <h1>Satellite Tracker</h1>
           </div>
         </div>
-      </Router>
+      </div>
     );
   }
 }
