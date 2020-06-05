@@ -41,7 +41,7 @@ class NEarea extends React.Component {
           display: true,
           position: "bottom",
           labels: {
-            fontColor: "#FCFCFC",
+            fontColor: "rgb(136, 146, 176)",
             fontSize: 16,
             padding: 16,
           },

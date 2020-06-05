@@ -9,7 +9,7 @@ export default function SliderImage(props) {
     indicators: true,
     arrows: true,
   };
-  console.log(props.images);
+  // console.log(props.images);
   for (let s of props.images) {
     slideImages.push(
       <div className="each-slide">

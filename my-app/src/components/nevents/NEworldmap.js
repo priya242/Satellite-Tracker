@@ -1,5 +1,4 @@
 import React from "react";
-//import { render } from "react-dom";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import mapDataWorld from "./nevents_map_latlong";
@@ -9,9 +8,7 @@ class NEworldmap extends React.Component {
     require("highcharts/modules/map")(Highcharts);
 
     const data = this.props.worlddata;
-    console.log(data)
     const map = mapDataWorld;
-    console.log(map)
 
     const mapOptions = {
       chart: {

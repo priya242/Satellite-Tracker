@@ -52,7 +52,6 @@ img {
   font-family: "lato", sans-serif;
 }
 
-
 h1 {
   font-size: 150px;
   margin-top: 0%;
@@ -101,31 +100,30 @@ video {
 .grid-item-video {
   grid-area: 1/3/2/5;
   background-color: rgb(10, 25, 47);
-  opacity : 0.8;
+  opacity: 0.8;
 }
 .grid-item2 {
   width: 100%;
   grid-area: 1/1/2/3;
   background-color: rgb(10, 25, 47);
-  opacity : 0.8;
+  opacity: 0.8;
 }
 .grid-item3 {
   width: 100%;
   grid-area: 2/1/3/3;
   /*background-image: radial-gradient(rgb(50, 62, 116), rgb(18, 6, 75));*/
   background-color: rgb(10, 25, 47);
-  opacity : 0.8;
+  opacity: 0.8;
 }
 .grid-item4 {
   grid-area: 2/2/3/5;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   background-color: rgb(10, 25, 47);
- 
 }
 .highcharts-background {
   background-color: rgb(10, 25, 47);
-  opacity : 0.8;
+  opacity: 0.8;
 }
 
 h1 {
@@ -191,7 +189,18 @@ h1 {
 }
 
 .number_events {
-  color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.nevents_donut {
+  padding: 2em;
+}
+
+/* .number_events > .number {
+  color: #fcfcfc;
   padding: 5px;
   margin: 5px;
   font-style: italic;
@@ -199,18 +208,20 @@ h1 {
 
 .number_events > span {
   font-style: normal;
-  color: #855988;
+  color: rgb(136, 146, 176);
   font-size: 10vh;
-}
+} */
 
 .nevents_container {
-  display: grid;
-  grid-template-rows: 45vh 45vh;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-direction: column;
+  /* grid-template-rows: 45vh 45vh;
+  grid-template-columns: repeat(4, 1fr); */
 }
 
 .nevents_item {
-  background-color: #141852;
+  background-color: rgb(10, 25, 47);
+  opacity: 0.8;
 }
 
 .nevents_world {

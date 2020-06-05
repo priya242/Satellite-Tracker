@@ -5,13 +5,12 @@ import NEeach from "./nevents/NEeach";
 import NEbubble from "./nevents/NEbubble";
 
 class NEvents extends React.Component {
-  // const NASA_API_KEY = encodeURIComponent(process.env.REACT_APP_NE_API_KEY);
   constructor() {
     super();
     this.state = {
       count: 0,
       days: 30,
-      bar: [],
+      donuts: [],
       worlddata: [],
       area_data_mag: [],
       bubble: [],
@@ -48,7 +47,7 @@ class NEvents extends React.Component {
     //   });
     let data = require("./nevents/tempin");
     let l_count = 0;
-    let l_bar = {};
+    let l_donuts = {};
     let l_worlddata = [];
     let l_date_mag = [];
     let l_catid = [0]; //BUBBLE : category with id as index
@@ -69,11 +68,11 @@ class NEvents extends React.Component {
       for (let category of event.categories) {
         //world + area
         categories += category.id + " ";
-        //BAR
-        if (category.id in l_bar) {
-          l_bar[category.id]++;
+        //DONUTS
+        if (category.id in l_donuts) {
+          l_donuts[category.id]++;
         } else {
-          l_bar[category.id] = 1;
+          l_donuts[category.id] = 1;
         }
         //BUBBLE
         if (!l_catid.includes(category.id, 0)) {
@@ -151,13 +150,12 @@ class NEvents extends React.Component {
       }
     }
 
-    l_bar = Object.keys(l_bar)
-      .map((key) => [key, l_bar[key]])
-      .sort((first, second) => second[1] - first[1])
-      .slice(0, 4);
+    l_donuts = Object.keys(l_donuts)
+      .map((key) => [key, l_donuts[key]])
+      .sort((first, second) => second[1] - first[1]);
 
     this.setState({
-      bar: l_bar,
+      donuts: l_donuts,
       count: l_count,
       worlddata: l_worlddata,
       area_data_mag: l_date_mag,
@@ -186,18 +184,18 @@ class NEvents extends React.Component {
         </div>
         <div className="nevents_container">
           <div className="number_events nevents_item">
-            <div className="number">
+            {/* <div className="number">
               Number of events: <br />
               <span>{this.state.count}</span>
-            </div>
-            {/* {this.state.donuts.length != 0
-              ? this.state.donuts
-                  .slice(0, 4)
-                  .map((donut) => (
-                    <NEeach event={donut} total={this.state.count} />
-                  ))
-              : ""} */}
-            <NEtop events={this.state.bar} total={this.state.count} />
+            </div> */}
+            {this.state.donuts.length != 0
+              ? this.state.donuts.map((donut) => (
+                  <div className="nevents_donut">
+                    <NEtop event={donut} total={this.state.count} />
+                  </div>
+                ))
+              : ""}
+            {/* <NEtop events={this.state.bar} total={this.state.count} /> */}
           </div>
           <NEworldmap worlddata={this.state.worlddata} />
           <NEeach area_data_mag={this.state.area_data_mag} />
