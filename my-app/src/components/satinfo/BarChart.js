@@ -68,8 +68,9 @@ class BarChart extends React.Component {
     };
 
     return (
-      <div className="grid-item3">
-        <Line data={data} height ={350} options={options} />
+      <div className="item3">
+        <h2>Satellites By LaunchYear</h2>
+        <Line data={data} height ={350} width = {100} options={options} />
       </div>
     );
   }

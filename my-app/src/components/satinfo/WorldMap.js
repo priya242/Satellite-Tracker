@@ -91,7 +91,8 @@ class WorldMap extends React.Component {
       ],
     }; 
       return (
-        <div className="grid-item4">
+        <div className="item4">
+          <h2>Satellites Position</h2>
           <HighchartsReact
             options={mapOptions}
             constructorType={"mapChart"}

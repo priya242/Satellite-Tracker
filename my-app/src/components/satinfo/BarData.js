@@ -94,7 +94,7 @@ class BarData extends React.Component {
         >
           {selectops}
         </select>
-        <BarChart satdata={d} />
+        <BarChart satdata={d}  />
       </div>
     );
   }
