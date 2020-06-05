@@ -43,7 +43,7 @@ class NEbubble extends React.Component {
       legend: {
         display: false,
       },
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
       scales: {
         yAxes: [
           {
@@ -83,7 +83,7 @@ class NEbubble extends React.Component {
     };
 
     return (
-      <div className="nevents_bubble">
+      <div className="nevents_item4">
         <Bubble data={data} options={options} />;
       </div>
     );

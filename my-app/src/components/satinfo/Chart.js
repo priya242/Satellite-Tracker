@@ -7,7 +7,7 @@ export default function Chart(props) {
   var isLoaded = false;
 
   for (var i = 0; i < props.DataSet.length; i++) {
-    if (props.DataSet[i].info.satcount > 20) {
+    if (props.DataSet[i].info.satcount > 5) {
       label.push(props.DataSet[i].info.category);
       Data.push(props.DataSet[i].info.satcount);
     }
@@ -19,8 +19,8 @@ export default function Chart(props) {
       {
         label: "Satellite Count By Categories",
         data: Data,
-        backgroundColor: "rgba(255, 215, 0,0.8)",
-        borderColor: "rgba(0 ,0 ,238,1)",
+        backgroundColor: "rgb(255, 215, 0)",
+        borderColor: "rgb(0 ,0 ,238)",
         borderWidth: 1,
         hoverBackgroundColor: "rgba(255, 215, 0,0.4)",
         hoverBorderColor: "rgba(0 ,0 ,238,1)",
@@ -31,7 +31,8 @@ export default function Chart(props) {
   };
 
   return (
-    <div className="grid-item2">
+   
+    <div className="item2">
     
       {!isLoaded && (
         <div
@@ -51,8 +52,9 @@ export default function Chart(props) {
           />
         </div>
       )}
+      <h2>Satellites By Categories</h2>
       <HorizontalBar
-        height={140}
+        height={280}
         data={data}
         options={{
           legend: {
