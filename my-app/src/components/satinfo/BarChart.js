@@ -1,31 +1,44 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
-class BarChart extends React.Component{
-  render(){
+import { Line } from "react-chartjs-2";
+class BarChart extends React.Component {
+  render() {
     let Datasets = this.props.satdata;
     //console.log(Datasets);
     let data = {};
     let options = {};
-   data = {
+    var isLoaded = true;
+    data = {
       labels: Object.keys(Datasets),
       datasets: [
         {
           label: "Satellite Count By Years",
+          data: Object.values(Datasets),
           //backgroundColor: "rgba(255, 215, 0,0.8)",
           //backgroundImage:"linear-gradient(	#ffce00,#ff9a00,#ff5a00)",
-          backgroundColor:"#C29710",
+          backgroundColor: "#C29710",
+          fill: false,
           borderColor: "rgba(0 ,0 ,238,1)",
           borderWidth: 1,
-          hoverBackgroundColor: "rgba(255, 215, 0,0.4)",
-          hoverBorderColor: "rgba(0 ,0 ,238,1)",
-          barPercentage: 1,
-          categoryPercentage:1,
-          barThickness: 20,
-          data: Object.values(Datasets),
+          lineTension: 0.1,
+          borderCapStyle: "butt",
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: "miter",
+          pointBorderColor: "rgba(75,192,192,1)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 1,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "rgba(75,192,192,1)",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 1,
+          pointHitRadius: 10,
         },
       ],
     };
-   options = {
+    options = {
+      responsive: true,
+      maintainAspectRatio: false,
       legend: {
         display: true,
         labels: {
@@ -35,9 +48,7 @@ class BarChart extends React.Component{
       scales: {
         yAxes: [
           {
-            scaleLabel: {
-              padding: 20,
-            },
+
             ticks: {
               autoSkip: false,
               fontColor: "#fff",
@@ -47,8 +58,6 @@ class BarChart extends React.Component{
         ],
         xAxes: [
           {
-            categoryPercentage: 1.0,
-            barPercentage: 1.0,
             ticks: {
               fontColor: "#fff",
               fontSize: 14,
@@ -58,11 +67,11 @@ class BarChart extends React.Component{
       },
     };
 
-    return(
-      <div className = "grid-item3">
-      <Bar data={data} height={100} width ={100} options={options} />
+    return (
+      <div className="grid-item3">
+        <Line data={data} height ={350} options={options} />
       </div>
-    );      
+    );
   }
 }
 export default BarChart;

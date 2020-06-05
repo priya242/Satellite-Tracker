@@ -25,10 +25,11 @@ class WorldMap extends React.Component {
         backgroundColor: {
           radialGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
           stops: [
-            [0, "#323e74"],
-            [1, "#12064b"],
-          
+            [0, "#0a192f"],
+            [1, "#0a192f"],
+            
           ],
+          styledMode: true
         },
         plotBorderColor: "#606063",
       },

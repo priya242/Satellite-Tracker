@@ -1,6 +1,5 @@
 import React from "react";
 import BarChart from "./BarChart";
-
 class BarData extends React.Component {
   constructor() {
     super();
@@ -40,6 +39,7 @@ class BarData extends React.Component {
     this.setState({
       yearlyData: tmpYearlyData,
       year: Object.keys(tmpYearlyData),
+      isLoaded: true,
     });
   }
 
@@ -47,7 +47,7 @@ class BarData extends React.Component {
     //let data = this.state.yearlyData;
     const { year, yearlyData } = this.state;
     //console.log(year);
-   // console.log(yearlyData);
+    // console.log(yearlyData);
     var data = [
       "2010-2020",
       "2000-2010",
@@ -57,24 +57,44 @@ class BarData extends React.Component {
       "1960-1970",
       "1950-1960",
     ];
-    let selectops = data.map((tempData, i) => (
-      <option key={tempData} value={tempData}>
-        {tempData}
-      </option>
-    ));
+    let selectops = data.map((tempData, i) => {
+      if (i == 0) {
+        return (
+          <option key={tempData} value={tempData} selected>
+            {tempData}
+          </option>
+        );
+      } else {
+        return (
+          <option key={tempData} value={tempData}>
+            {tempData}
+          </option>
+        );
+      }
+    });
+    let d = {};
+    if (
+      Object.keys(this.state.yearlyData).length === 0 &&
+      this.state.yearlyData.constructor === Object
+    ) {
+      if (data.length != 0) {
+        d = data[0];
+      }
+    } else {
+      d = this.state.yearlyData;
+    }
 
     return (
       <div>
-        
-          <select
-            name="Select year"
-            className="dropdown"
-            onChange={this.handleChange}
-          >
-            {selectops}
-          </select>
-        
-        <BarChart satdata={this.state.yearlyData} />
+        <select
+          name="Select year"
+          className="dropdown"
+          onChange={this.handleChange}
+          id="dd"
+        >
+          {selectops}
+        </select>
+        <BarChart satdata={d} />
       </div>
     );
   }
