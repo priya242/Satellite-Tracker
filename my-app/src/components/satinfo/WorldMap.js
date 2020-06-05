@@ -23,10 +23,11 @@ class WorldMap extends React.Component {
     const mapOptions = {
       chart: {
         backgroundColor: {
-          linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+          radialGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
           stops: [
-            [0, "#2a2a2b"],
-            [1, "#3e3e40"],
+            [0, "#323e74"],
+            [1, "#12064b"],
+          
           ],
         },
         plotBorderColor: "#606063",
