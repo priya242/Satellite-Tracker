@@ -52,7 +52,6 @@ img {
   font-family: "lato", sans-serif;
 }
 
-
 h1 {
   font-size: 150px;
   margin-top: 0%;
@@ -199,7 +198,18 @@ h1 {
 }
 
 .number_events {
-  color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.nevents_donut {
+  padding: 2em;
+}
+
+/* .number_events > .number {
+  color: #fcfcfc;
   padding: 5px;
   margin: 5px;
   font-style: italic;
@@ -207,18 +217,20 @@ h1 {
 
 .number_events > span {
   font-style: normal;
-  color: #855988;
+  color: rgb(136, 146, 176);
   font-size: 10vh;
-}
+} */
 
 .nevents_container {
-  display: grid;
-  grid-template-rows: 45vh 45vh;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-direction: column;
+  /* grid-template-rows: 45vh 45vh;
+  grid-template-columns: repeat(4, 1fr); */
 }
 
 .nevents_item {
-  background-color: #141852;
+  background-color: rgb(10, 25, 47);
+  opacity: 0.8;
 }
 
 .nevents_world {
