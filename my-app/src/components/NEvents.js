@@ -10,7 +10,7 @@ class NEvents extends React.Component {
     this.state = {
       count: 0,
       days: 30,
-      donuts: [],
+      bar: [],
       worlddata: [],
       area_data_mag: [],
       bubble: [],
@@ -47,7 +47,7 @@ class NEvents extends React.Component {
     //   });
     let data = require("./nevents/tempin");
     let l_count = 0;
-    let l_donuts = {};
+    let l_bar = {};
     let l_worlddata = [];
     let l_date_mag = [];
     let l_catid = [0]; //BUBBLE : category with id as index
@@ -68,11 +68,11 @@ class NEvents extends React.Component {
       for (let category of event.categories) {
         //world + area
         categories += category.id + " ";
-        //DONUTS
-        if (category.id in l_donuts) {
-          l_donuts[category.id]++;
+        //BAR
+        if (category.id in l_bar) {
+          l_bar[category.id]++;
         } else {
-          l_donuts[category.id] = 1;
+          l_bar[category.id] = 1;
         }
         //BUBBLE
         if (!l_catid.includes(category.id, 0)) {
@@ -150,12 +150,12 @@ class NEvents extends React.Component {
       }
     }
 
-    l_donuts = Object.keys(l_donuts)
-      .map((key) => [key, l_donuts[key]])
+    l_bar = Object.keys(l_bar)
+      .map((key) => [key, l_bar[key]])
       .sort((first, second) => second[1] - first[1]);
 
     this.setState({
-      donuts: l_donuts,
+      bar: l_bar,
       count: l_count,
       worlddata: l_worlddata,
       area_data_mag: l_date_mag,
@@ -169,11 +169,11 @@ class NEvents extends React.Component {
     return (
       <div className="nevents">
         <div className="navbar">
-          <span>
-            <b>Natural Events</b>
-          </span>
+          <div className="number">
+            # Events: <span>{this.state.count}</span>
+          </div>
           <div className="nav-controls">
-            Information for the last{" "}
+            Info for last{" "}
             <input
               type="number"
               defaultValue={this.state.days}
@@ -183,27 +183,22 @@ class NEvents extends React.Component {
           </div>
         </div>
         <div className="nevents_container">
-          <div className="nevent-item1">
-            {/* <div className="number">
-              Number of events: <br />
-              <span>{this.state.count}</span>
-            </div> */}
-            {this.state.donuts.length != 0
-              ? this.state.donuts.map((donut) => (
-                  <div className="nevents_donut">
-                    <NEtop event={donut} total={this.state.count} />
-                  </div>
-                ))
-              : ""}
-            {/* <NEtop events={this.state.bar} total={this.state.count} /> */}
+          <div className="nevent-item">
+            <NEtop events={this.state.bar} total={this.state.count} />
           </div>
-          <NEworldmap worlddata={this.state.worlddata} />
-          <NEeach area_data_mag={this.state.area_data_mag} />
-          <NEbubble
-            bubble={this.state.bubble}
-            dateid={this.state.dateid}
-            catid={this.state.catid}
-          />
+          <div className="nevent-item">
+            <NEworldmap worlddata={this.state.worlddata} />
+          </div>
+          <div className="nevent-item">
+            <NEeach area_data_mag={this.state.area_data_mag} />
+          </div>
+          <div className="nevent-item">
+            <NEbubble
+              bubble={this.state.bubble}
+              dateid={this.state.dateid}
+              catid={this.state.catid}
+            />
+          </div>
         </div>
       </div>
     );

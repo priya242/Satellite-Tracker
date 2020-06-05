@@ -13,7 +13,7 @@ class NEbubble extends React.Component {
       datasets: [
         {
           data: bubble,
-          backgroundColor: "orange",
+          backgroundColor: "#01D4B4",
         },
       ],
     };
@@ -82,11 +82,7 @@ class NEbubble extends React.Component {
       },
     };
 
-    return (
-      <div className="nevents_item4">
-        <Bubble data={data} options={options} />;
-      </div>
-    );
+    return <Bubble data={data} options={options} />;
   }
 }
 export default NEbubble;
