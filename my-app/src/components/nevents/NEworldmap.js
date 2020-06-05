@@ -77,7 +77,7 @@ class NEworldmap extends React.Component {
     };
 
     return (
-      <div className="nevents_world nevents_item">
+      <div className="nevents_item2">
         <HighchartsReact
           options={mapOptions}
           constructorType={"mapChart"}

@@ -38,7 +38,7 @@ class BarChart extends React.Component {
     };
     options = {
       responsive: true,
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
       legend: {
         display: true,
         labels: {
@@ -68,8 +68,9 @@ class BarChart extends React.Component {
     };
 
     return (
-      <div className="grid-item3">
-        <Line data={data} height ={350} options={options} />
+      <div >
+        
+        <Line data={data} options={options} />
       </div>
     );
   }
