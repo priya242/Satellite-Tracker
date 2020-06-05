@@ -1,5 +1,4 @@
 import React from "react";
-// import { Doughnut } from "react-chartjs-2";
 import { Bar } from "react-chartjs-2";
 
 class NEtop extends React.Component {
@@ -8,21 +7,21 @@ class NEtop extends React.Component {
     let labels = events.map((event) => event[0]);
     let data = events.map((event) => event[1]);
     let total = this.props.total;
+
+    let labels_bg = labels.map((label) => "#01D4B4");
+    let labels_hover = labels.map(() => "#027564");
+
     const state = {
       labels: labels,
       datasets: [
         {
-          backgroundColor: [
-            "linear-gradient(#FF9C00, #01D4B4)",
-            "#972f48",
-            "#972f48",
-            "#972f48",
-          ],
-          hoverBackgroundColor: ["#772249", "#772249", "#772249", "#772249"],
-          hoverBorderColor: ["#772249", "#772249", "#772249", "#772249"],
+          backgroundColor: labels_bg,
+          hoverBackgroundColor: labels_hover,
+          hoverBorderColor: labels_hover,
           hoverBorderWidth: 0,
           borderWidth: 0,
-          barPercentage: 0.2,
+          barPercentage: 0.5,
+          categoryPercentage: 1,
           data: data,
         },
       ],
@@ -31,8 +30,8 @@ class NEtop extends React.Component {
     const options = {
       maintainAspectRatio: false,
       title: {
-        display: true,
-        text: "Most prevalent event types",
+        display: false,
+        text: "Events around the globe",
         position: "bottom",
       },
       legend: {
@@ -56,7 +55,8 @@ class NEtop extends React.Component {
     //       ctx.textBaseline = "middle";
     //       ctx.fillStyle = "#972f48";
 
-    //       var text = count.toString(),
+    //       console.log(total);
+    //       var text = total.toString(),
     //         textX = Math.round((width - ctx.measureText(text).width) / 2),
     //         textY = height / 2;
 
@@ -66,9 +66,7 @@ class NEtop extends React.Component {
     //   },
     // ];
 
-    return (
-      <div>{<Bar data={state} options={options} /*plugins={plugin} */ />}</div>
-    );
+    return <Bar data={state} options={options} />; // plugins={plugin} />;
   }
 }
 export default NEtop;

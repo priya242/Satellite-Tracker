@@ -5,7 +5,6 @@ import NEeach from "./nevents/NEeach";
 import NEbubble from "./nevents/NEbubble";
 
 class NEvents extends React.Component {
-  // const NASA_API_KEY = encodeURIComponent(process.env.REACT_APP_NE_API_KEY);
   constructor() {
     super();
     this.state = {
@@ -153,8 +152,8 @@ class NEvents extends React.Component {
 
     l_bar = Object.keys(l_bar)
       .map((key) => [key, l_bar[key]])
-      .sort((first, second) => second[1] - first[1])
-      .slice(0, 4);
+      .sort((first, second) => second[1] - first[1]);
+    // .slice(0, 4);
 
     this.setState({
       bar: l_bar,
@@ -186,10 +185,10 @@ class NEvents extends React.Component {
         </div>
         <div className="nevents_container">
           <div className="number_events nevents_item">
-            <div className="number">
+            {/* <div className="number">
               Number of events: <br />
               <span>{this.state.count}</span>
-            </div>
+            </div> */}
             {/* {this.state.donuts.length != 0
               ? this.state.donuts
                   .slice(0, 4)
