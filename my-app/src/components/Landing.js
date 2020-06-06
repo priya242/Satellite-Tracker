@@ -38,7 +38,7 @@ class Landing extends React.Component {
     fetch(
       `https://api.nasa.gov/EPIC/api/natural/date/${encodeURIComponent(
         latest_string
-      )}?api_key=${encodeURIComponent(NASA_API_KEY)}`
+      )}?api_key=UBd7qenIdixIhKLT7TWlcZLV8JXxkArN34QkfdbA`
     )
       .then((response) => response.json())
       .then((data) => {

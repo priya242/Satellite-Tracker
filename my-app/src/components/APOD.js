@@ -5,6 +5,7 @@ class APOD extends React.Component {
       this.state = {
         image:"",
         imagedate:"",
+        title:"",
         caption:"",
       };
     }
@@ -23,6 +24,7 @@ class APOD extends React.Component {
             this.setState({
                 image:data.url,
                 imagedate:data.date,
+                title:data.title,
                 caption:data.explanation,
             });
           });
@@ -31,11 +33,12 @@ class APOD extends React.Component {
         this.fetchData();
       }
  render(){
-    const { image,imagedate,caption } = this.state;
+    const { image,imagedate,caption,title } = this.state;
     return(
-        <div className ="item-5">
-        <p>Date : {imagedate}</p>
+        <div className ="item5">
+        <h3>{title}</h3>
         <img src={image} alt="astronomical pic of the day" /> 
+        <p>Updated on : {imagedate}</p>
         <p>About : {caption}</p>
         </div>
     )

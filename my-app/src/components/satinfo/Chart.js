@@ -19,10 +19,10 @@ export default function Chart(props) {
       {
         label: "Satellite Count By Categories",
         data: Data,
-        backgroundColor: "rgb(255, 215, 0)",
-        borderColor: "rgb(0 ,0 ,238)",
+        backgroundColor: "#01D4B4",
+        borderColor: "rgb(0,0,238)",
         borderWidth: 1,
-        hoverBackgroundColor: "rgba(255, 215, 0,0.4)",
+        hoverBackgroundColor: "rgb(1,212,180,0.5)",
         hoverBorderColor: "rgba(0 ,0 ,238,1)",
         barPercentage: 0.5,
         barThickness: 20,
@@ -46,7 +46,7 @@ export default function Chart(props) {
         >
           <Loader
             type="ThreeDots"
-            color="rgba(255, 215, 0,0.8)"
+            color="#FF9C00"
             height="100"
             width="100"
           />

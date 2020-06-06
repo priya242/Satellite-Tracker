@@ -25,8 +25,8 @@ class WorldMap extends React.Component {
         backgroundColor: {
           radialGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
           stops: [
-            [0, "#0a192f"],
-            [1, "#0a192f"],
+            [0, "#2a2a2b"],
+            [1, "#3e3e40"],
             
           ],
           styledMode: true
@@ -63,20 +63,23 @@ class WorldMap extends React.Component {
         },
       },
 
+      mapNavigation: {
+        enabled: true,
+      },
 
       series: [
         {
           name: "Basemap",
           mapData: map,
           borderColor: "#A0A0A0",
-          nullColor: "#4c4cff",
+          nullColor: "rgba(200, 200, 200, 0.3)",
           showInLegend: false,
         },
         {
           type: "mappoint",
           turboThreshold: 3300,
           name: "Satellites",
-          color: "#C29710",
+          color: "#01D4B4",
           dataLabels: {
             enabled: false,
             format: "{point.name}",

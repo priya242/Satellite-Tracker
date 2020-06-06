@@ -75,6 +75,7 @@ li {
 li a {
   display: block;
   color: white;
+  font-weight: bold;
   font-size: larger;
   text-align: center;
   padding: 14px 16px;
@@ -94,6 +95,7 @@ li a:hover {
 h2{
   margin: 0 auto;
   padding: 5%;
+  color : "#FF9C00"
 }
 
 video {
@@ -108,7 +110,6 @@ video {
 .item2 {
   width: 60%;
   background-color: rgb(10, 25, 47);
-  opacity : 0.8;
   margin: 5% auto;
    
 }
@@ -150,6 +151,7 @@ h1 {
   height: 100vh;
   margin: 0 auto;
   padding: 1em;
+  color : "#FF9C00"
 }
 
 /* --------------------------------NE events page - 2 ----------------------------*/
@@ -241,6 +243,17 @@ h1 {
   background-color: rgb(10, 25, 47);
  
   margin:5% auto;
+}
+
+/*------------------------------------------APOD PAGE------------------------------*/
+.item5{
+ font-style: italic;
+ text-align: center;
+ padding: 0px;
+}
+.item5 img {
+  opacity: 1;
+  border: 2px solid whitesmoke;
 }
 
 /* -----------------------------------------END----------------------------------*/
