@@ -39,6 +39,7 @@ class App extends React.Component {
             <APOD />
           </Route>
         </Switch>
+       {/*<footer>Deepa Varghese | Priyanka Pandey @copyrights reserved</footer>*/ } 
       </div>
     );
   }

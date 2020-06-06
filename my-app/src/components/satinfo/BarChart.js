@@ -11,7 +11,6 @@ class BarChart extends React.Component {
       labels: Object.keys(Datasets),
       datasets: [
         {
-          label: "Satellite Count By Years",
           data: Object.values(Datasets),
           backgroundColor: "#FF9C00",
           fill: false,
@@ -37,8 +36,18 @@ class BarChart extends React.Component {
     options = {
       responsive: true,
       maintainAspectRatio: true,
-      legend: {
+      title: {
         display: true,
+        text: "Number of Satellites by Launch Year",
+        position: "top",
+        fontSize: 16,
+        // fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+        fontColor: "#FCFCFC",
+        fontStyle: "bold",
+        padding: 16,
+      },
+      legend: {
+        display: false,
         labels: {
           fontColor: "#fff",
         },

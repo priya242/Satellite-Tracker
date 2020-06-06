@@ -27,17 +27,21 @@ class WorldMap extends React.Component {
           stops: [
             [0, "#2a2a2b"],
             [1, "#3e3e40"],
-            
           ],
-          styledMode: true
+          styledMode: true,
         },
         plotBorderColor: "#606063",
       },
       title: {
-        text: "",
+        text: "Satellite Position Projected on Earth",
+        style: {
+          color: "#FCFCFC",
+          // fontSize: "",
+        },
       },
-      subtitle:{
-        text:"",
+
+      subtitle: {
+        text: "",
       },
       /**  colorAxis: {
       min: 0,
@@ -52,12 +56,10 @@ class WorldMap extends React.Component {
 
       tooltip: {
         pointFormat:
-          "{point.name}<br>" +
-           "Lat: {point.lat} " + 
-           "Lon: {point.lon}<br>",
-           //backgroundColor: "rgba(0, 0, 0, 0.85)",
-           backgroundColor:"rgb(50, 62, 116)",
-           //backgroundImage:"radial-gradient(rgb(50, 62, 116), rgb(18, 6, 75))",
+          "{point.name}<br>" + "Lat: {point.lat} " + "Lon: {point.lon}<br>",
+        //backgroundColor: "rgba(0, 0, 0, 0.85)",
+        backgroundColor: "rgb(50, 62, 116)",
+        //backgroundImage:"radial-gradient(rgb(50, 62, 116), rgb(18, 6, 75))",
         style: {
           color: "#F0F0F0",
         },
@@ -92,20 +94,16 @@ class WorldMap extends React.Component {
           showInLegend: false,
         },
       ],
-    }; 
-      return (
-        <div className="item4">
-          <h2>Satellites Position</h2>
-          <HighchartsReact
-            options={mapOptions}
-            constructorType={"mapChart"}
-            highcharts={Highcharts}
-          />
-        </div>
-      );
-    }
+    };
+    return (
+      <div className="item4">
+        <HighchartsReact
+          options={mapOptions}
+          constructorType={"mapChart"}
+          highcharts={Highcharts}
+        />
+      </div>
+    );
   }
-  export default WorldMap;
-    
-   
-    
+}
+export default WorldMap;
