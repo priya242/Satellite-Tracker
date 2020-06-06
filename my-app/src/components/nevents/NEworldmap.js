@@ -22,12 +22,11 @@ class NEworldmap extends React.Component {
         plotBorderColor: "#606063",
       },
       title: {
-        text: "",
-        // style: {
-        //   color: "#E0E0E3",
-        //   textTransform: "uppercase",
-        //   fontSize: "20px",
-        // },
+        text: "Location of each event",
+        style: {
+          color: "#FCFCFC",
+          // fontSize: "",
+        },
       },
       subtitle: {
         text: "",
@@ -41,7 +40,7 @@ class NEworldmap extends React.Component {
           "Date: {point.date}",
         backgroundColor: "rgba(0, 0, 0, 0.85)",
         style: {
-          color: "#F0F0F0",
+          color: "#FCFCFC",
         },
       },
 
@@ -61,7 +60,7 @@ class NEworldmap extends React.Component {
         {
           type: "mappoint",
           name: "Event",
-          color: "#90ee7e",
+          color: "#01D4B4",
           dataLabels: {
             enabled: true,
             format: "{point.type}",
@@ -77,13 +76,11 @@ class NEworldmap extends React.Component {
     };
 
     return (
-      <div className="nevents_item2">
-        <HighchartsReact
-          options={mapOptions}
-          constructorType={"mapChart"}
-          highcharts={Highcharts}
-        />
-      </div>
+      <HighchartsReact
+        options={mapOptions}
+        constructorType={"mapChart"}
+        highcharts={Highcharts}
+      />
     );
   }
 }

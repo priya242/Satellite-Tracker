@@ -55,8 +55,8 @@ class NEeach extends React.Component {
     }
 
     return (
-      <div className = "nevents_item3">
-        <div className="nav-controls">
+      <div>
+        <div className="nevents_select">
           <select
             name="Event"
             className="area_select"
@@ -65,7 +65,9 @@ class NEeach extends React.Component {
             {selectops}
           </select>
         </div>
-        <NEarea event={defaultOption} />
+        <div>
+          <NEarea event={defaultOption} />
+        </div>
       </div>
     );
   }

@@ -8,6 +8,8 @@ class NEarea extends React.Component {
     let options = {};
 
     if (Object.keys(event).length !== 0 && event.constructor === Object) {
+      console.log(this);
+
       let l_labels = event.geometry.map((g) => g.date);
       let l_data = event.geometry.map((g) => g.magnitudeValue);
 
@@ -23,9 +25,9 @@ class NEarea extends React.Component {
         datasets: [
           {
             label: l_label,
-            fill: false,
+            fill: "origin",
             lineTension: 0.5,
-            backgroundColor: "#01D4B4",
+            backgroundColor: "rgba(1,212,180,0.5)",
             borderColor: "#01D4B4",
             borderWidth: 2,
             data: l_data,
@@ -36,20 +38,46 @@ class NEarea extends React.Component {
         title: {
           display: true,
           text: "Magnitude per day",
+          fontColor: "#FCFCFC",
+          //   fontSize: 16,
         },
         legend: {
           display: true,
           position: "bottom",
           labels: {
-            fontColor: "rgb(136, 146, 176)",
-            fontSize: 16,
+            fontColor: "#FCFCFC",
+            // fontSize: 16,
             padding: 16,
           },
+        },
+        scales: {
+          yAxes: [
+            {
+              gridLines: {
+                display: true,
+                color: "#1b3b69",
+                zeroLineColor: "#041021", //"RGBA(4, 16, 33, 0.5)",
+              },
+              ticks: {
+                fontColor: "#FCFCFC",
+                // fontSize: 20,
+              },
+            },
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: "#FCFCFC",
+                // fontSize: 16,
+                beginAtZero: true,
+              },
+            },
+          ],
         },
       };
     }
 
-    return <Line data={data} options={options} />;
+    return <Line data={data} options={options} />; // plugins={plugin} />;
   }
 }
 
