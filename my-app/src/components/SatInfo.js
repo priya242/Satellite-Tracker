@@ -97,7 +97,7 @@ class SatInfo extends React.Component {
     //console.log(launchDate)
     return (
       <div className="satinfo">
-        <h2>Total Satellites : {launchDate.length}</h2>
+        <div className = "sattitle">Total Satellites : {launchDate.length} </div>
         <div className="satinfo_container">
           <div className="item1">
             <video autoPlay controls muted loop src={nasa} type="video/mp4" />
