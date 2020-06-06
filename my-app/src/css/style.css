@@ -91,6 +91,11 @@ li a:hover {
     flex-direction: column;
     font-size:0.3em;
   }
+
+  li a {
+    font-size: small;
+    padding:0.5em;
+  }
   
 
 
@@ -105,7 +110,13 @@ li a:hover {
 h2 {
   margin: 0 auto;
   padding: 5%;
-  color : "#FF9C00"
+  color : #FF9C00; 
+  
+}
+.sattitle{
+  text-align: center;
+  color : #FF9C00;
+  font-weight: bold;  
 }
 
 video {
@@ -159,6 +170,19 @@ h1 {
   margin: 0 auto;
   padding: 1em;
   color : "#FF9C00"
+}
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  .item2 {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    overflow-x: hidden;
+    transform-origin: left top;
+    background-color: rgba(10, 25, 47, 1);
+    
+  }
+  
 }
 
 /* --------------------------------NE events page - 2 ----------------------------*/
