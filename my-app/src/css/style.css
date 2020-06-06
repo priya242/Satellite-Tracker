@@ -53,7 +53,7 @@ img {
 }
 
 h1 {
-  font-size: 150px;
+  font-size: 8em;
   margin-top: 0%;
   font-weight: bolder;
   text-align: center;
@@ -75,6 +75,7 @@ li {
 li a {
   display: block;
   color: white;
+  font-weight: bold;
   font-size: larger;
   text-align: center;
   padding: 14px 16px;
@@ -83,6 +84,18 @@ li a {
 
 li a:hover {
   background-color: #38495a;
+}
+@media (min-width: 320px) and (max-width: 414px) {
+  .landing-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.3em;
+  }
+
+  li a {
+    font-size: small;
+    padding: 0.5em;
+  }
 }
 /*---------------------------------------- Satellite Info -------------------------------*/
 .satinfo_container {
@@ -94,6 +107,12 @@ li a:hover {
 h2 {
   margin: 0 auto;
   padding: 5%;
+  color: #ff9c00;
+}
+.sattitle {
+  text-align: center;
+  color: #ff9c00;
+  font-weight: bold;
 }
 
 video {
@@ -108,7 +127,6 @@ video {
 .item2 {
   width: 60%;
   background-color: rgb(10, 25, 47);
-  opacity: 0.8;
   margin: 5% auto;
 }
 .item3 {
@@ -147,6 +165,18 @@ h1 {
   height: 100vh;
   margin: 0 auto;
   padding: 1em;
+  color: "#FF9C00";
+}
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  .item2 {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    overflow-x: hidden;
+    transform-origin: left top;
+    background-color: rgba(10, 25, 47, 1);
+  }
 }
 
 /* --------------------------------NE events page - 2 ----------------------------*/
@@ -225,3 +255,16 @@ h1 {
     background-color: rgba(10, 25, 47, 1);
   }
 }
+
+/*------------------------------------------APOD PAGE------------------------------*/
+.item5 {
+  font-style: italic;
+  text-align: center;
+  padding: 0px;
+}
+.item5 img {
+  opacity: 1;
+  border: 2px solid whitesmoke;
+}
+
+/* -----------------------------------------END----------------------------------*/

@@ -3,6 +3,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import SatInfo from "./components/SatInfo";
 import NEvents from "./components/NEvents";
 import Landing from "./components/Landing";
+import APOD from "./components/APOD";
 import "./css/style.css";
 
 class App extends React.Component {
@@ -20,6 +21,9 @@ class App extends React.Component {
           <li>
             <Link to="/nevents">Natural Events</Link>
           </li>
+          <li>
+            <Link to="/APOD">APOD</Link>
+          </li>
         </ul>
         <Switch>
           <Route exact path="/">
@@ -30,6 +34,9 @@ class App extends React.Component {
           </Route>
           <Route path="/nevents">
             <NEvents />
+          </Route>
+          <Route path="/APOD">
+            <APOD />
           </Route>
         </Switch>
       </div>
