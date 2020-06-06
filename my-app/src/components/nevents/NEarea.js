@@ -35,6 +35,7 @@ class NEarea extends React.Component {
         ],
       };
       options = {
+        // maintainAspectRatio: false,
         title: {
           display: true,
           text: "Magnitude per day",
