@@ -105,6 +105,7 @@ class SatInfo extends React.Component {
           <Chart DataSet={Data} />
           <BarData DataSets={launchDate} />
           <WorldMap WorldDataSet={launchDate} />
+
         </div>
       </div>
     );

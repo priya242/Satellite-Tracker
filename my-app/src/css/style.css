@@ -53,7 +53,7 @@ img {
 }
 
 h1 {
-  font-size: 150px;
+  font-size: 8em;
   margin-top: 0%;
   font-weight: bolder;
   text-align: center;
@@ -85,6 +85,16 @@ li a {
 li a:hover {
   background-color: #38495a;
 }
+@media (min-width: 320px) and (max-width: 414px) {
+  .landing-container{
+    display:flex;
+    flex-direction: column;
+    font-size:0.3em;
+  }
+  
+
+
+}
 /*---------------------------------------- Satellite Info -------------------------------*/
 .satinfo_container {
   display: flex;
@@ -110,10 +120,6 @@ video {
 .item2 {
   width: 60%;
   background-color: rgb(10, 25, 47);
-<<<<<<< HEAD
-=======
-  opacity: 0.8;
->>>>>>> master
   margin: 5% auto;
 }
 .item3 {
@@ -223,7 +229,6 @@ h1 {
   height: 30px;
   font-size: 10vh;
   background-color: rgb(10, 25, 47);
-<<<<<<< HEAD
  
   margin:5% auto;
 }
@@ -239,8 +244,4 @@ h1 {
   border: 2px solid whitesmoke;
 }
 
-=======
-  border: 1px solid white;
-} */
->>>>>>> master
 /* -----------------------------------------END----------------------------------*/
