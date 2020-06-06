@@ -97,6 +97,16 @@ li a:hover {
     padding: 0.5em;
   }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .landing-container {
+    font-size: 0.5em;
+  }
+
+  li a {
+    font-size: small;
+    padding: 0.5em;
+  }
+}
 /*---------------------------------------- Satellite Info -------------------------------*/
 .satinfo_container {
   display: flex;
@@ -111,7 +121,9 @@ h2 {
 }
 .sattitle {
   text-align: center;
-  color: #ff9c00;
+  padding:1em;
+  font-size:x-large;
+  color:whitesmoke;
   font-weight: bold;
 }
 
@@ -119,24 +131,24 @@ video {
   width: 100%;
 }
 .item1 {
-  width: 60%;
+  width: 80%;
   background-color: rgb(10, 25, 47);
   opacity: 0.8;
   margin: 0 auto;
 }
 .item2 {
-  width: 60%;
+  width: 80%;
   background-color: rgb(10, 25, 47);
   margin: 5% auto;
 }
 .item3 {
-  width: 60%;
+  width: 80%;
   margin: 5% auto;
   /*background-image: radial-gradient(rgb(50, 62, 116), rgb(18, 6, 75));*/
   background-color: rgba(10, 25, 47, 0.8);
 }
 .item4 {
-  width: 60%;
+  width: 80%;
   margin: 5% auto;
 }
 
@@ -167,7 +179,7 @@ h1 {
   padding: 1em;
   color: "#FF9C00";
 }
-@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+/**@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
   .item2 {
     transform: rotate(-90deg);
     transform-origin: left top;
@@ -176,6 +188,12 @@ h1 {
     overflow-x: hidden;
     transform-origin: left top;
     background-color: rgba(10, 25, 47, 1);
+  }
+} **/
+@media (min-width: 320px) and (max-width: 500px) {
+
+  .item1 .item2 .item3 .item4 {
+    width: 100%;
   }
 }
 
@@ -267,4 +285,14 @@ h1 {
   border: 2px solid whitesmoke;
 }
 
+/*-----------footer-------*/
+footer{
+  position: relative;
+  bottom: 0em;
+  left: 0em;
+  background-color: black;
+  padding:3vh 2vw;
+  text-align: center;
+  color:gray;
+}
 /* -----------------------------------------END----------------------------------*/

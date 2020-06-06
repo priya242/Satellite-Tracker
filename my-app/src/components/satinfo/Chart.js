@@ -52,11 +52,21 @@ export default function Chart(props) {
           />
         </div>
       )}
-      <h2>Satellites By Categories</h2>
+    
       <HorizontalBar
         height={280}
         data={data}
         options={{
+          title: {
+            display: true,
+            text: "Number of Satellites according to Categories",
+            position: "top",
+            fontSize: 16,
+            // fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+            fontColor: "#FCFCFC",
+            fontStyle: "bold",
+            padding: 16,
+          },
           legend: {
             display:true,
             position:"bottom",

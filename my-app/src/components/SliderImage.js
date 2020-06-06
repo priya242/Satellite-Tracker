@@ -1,14 +1,15 @@
 import React from "react";
-import { Slide } from "react-slideshow-image";
+import { Fade } from "react-slideshow-image";
 export default function SliderImage(props) {
   const slideImages = [];
-  const properties = {
-    duration: 5000,
-    transitionDuration: 300,
-    infinite: true,
+  const fadeProperties = {
+    duration: 1000,
+    transitionDuration: 500,
+    infinite: false,
+    pauseOnHover: true,
     indicators: true,
-    arrows: true,
-  };
+    arrows: false,
+  }
   // console.log(props.images);
   for (let s of props.images) {
     slideImages.push(
@@ -17,5 +18,5 @@ export default function SliderImage(props) {
       </div>
     );
   }
-  return <Slide {...properties}>{slideImages}</Slide>;
+  return <Fade {...fadeProperties}>{slideImages}</Fade>;
 }

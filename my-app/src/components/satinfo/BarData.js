@@ -86,7 +86,6 @@ class BarData extends React.Component {
 
     return (
       <div className = "item3">
-        <h2>Satellites By LaunchYear</h2>
         <select
           name="Select year"
           className="dropdown"
